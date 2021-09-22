@@ -28,7 +28,7 @@ public class ApplicationLauncher {
 		System.out.println("Locale: "+Locale.getDefault());
 		
 		
-
+// Kaixo Nikolas
 		try {
 			
 			BLFacade appFacadeInterface;
