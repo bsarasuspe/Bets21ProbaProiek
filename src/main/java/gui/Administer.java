@@ -89,7 +89,7 @@ public class Administer extends JFrame {
 			e.printStackTrace();
 		}
 	}
-
+//hau beste froga bat da
 	private void jbInit() throws Exception {
 
 		this.getContentPane().setLayout(null);
