@@ -398,7 +398,8 @@ public boolean existQuestion(Event event, String question) {
 		return user;
 	}
 	
-	private RegisteredUser ApostuaEginDos (double DiruKantitaea,RegisteredUser usuario, Vector<Pronostico>  pronostico,RegisteredUser mandon) throws IncorrectBetException{
+	private RegisteredUser ApostuaEginDos (double DiruKantitaea,RegisteredUser usuario, 
+			Vector<Pronostico> pronostico,RegisteredUser mandon) throws IncorrectBetException{
 		db.getTransaction().begin();
 		Vector<Pronostico> pronosticolocal=new Vector<Pronostico>();
 		Pronostico tmp;
