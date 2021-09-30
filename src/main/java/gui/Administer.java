@@ -61,7 +61,7 @@ public class Administer extends JFrame {
 	private JLabel jLabelMsg = new JLabel();
 	private JLabel jLabelError = new JLabel();
 	
-	private Vector<Date> datesWithEventsCurrentMonth = new Vector<Date>();
+	private ArrayList<Date> datesWithEventsCurrentMonth = new ArrayList<Date>();
 	private final JLabel EventDescription = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("EventDescription")); //$NON-NLS-1$ //$NON-NLS-2$
 	private JTextPane textPane;
 	private final JButton CreateEvent = new JButton(ResourceBundle.getBundle("Etiquetas").getString("CreateEvent")); //$NON-NLS-1$ //$NON-NLS-2$
@@ -369,7 +369,7 @@ public class Administer extends JFrame {
 	}
 
 	
-public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWithEventsCurrentMonth) {
+public static void paintDaysWithEvents(JCalendar jCalendar,ArrayList<Date> datesWithEventsCurrentMonth2) {
 		// For each day with events in current month, the background color for that day is changed.
 
 		
@@ -388,7 +388,7 @@ public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWit
 			offset += 5;
 		
 		
-	 	for (Date d:datesWithEventsCurrentMonth){
+	 	for (Date d:datesWithEventsCurrentMonth2){
 
 	 		calendar.setTime(d);
 	 		System.out.println(d);

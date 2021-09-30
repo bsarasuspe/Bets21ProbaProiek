@@ -31,7 +31,7 @@ public class FindQuestionsGUI extends JFrame {
 	private JScrollPane scrollPaneEvents = new JScrollPane();
 	private JScrollPane scrollPaneQueries = new JScrollPane();
 	
-	private Vector<Date> datesWithEventsCurrentMonth = new Vector<Date>();
+	private ArrayList<Date> datesWithEventsCurrentMonth = new ArrayList<Date>();
 
 	private JTable tableEvents= new JTable();
 	private JTable tableQueries = new JTable();

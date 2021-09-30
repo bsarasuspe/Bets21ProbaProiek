@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -48,7 +49,7 @@ public class InicioGUI extends JFrame {
 	private Calendar calendarAct = null;
 	private JScrollPane scrollPaneEvents = new JScrollPane();
 	private JScrollPane scrollPaneQueries = new JScrollPane();
-	private Vector<Date> datesWithEventsCurrentMonth = new Vector<Date>();
+	private ArrayList<Date> datesWithEventsCurrentMonth = new ArrayList<Date>();
 	private JTable tableEvents= new JTable();
 	private JTable tableQueries = new JTable();
 	private DefaultTableModel tableModelEvents;
