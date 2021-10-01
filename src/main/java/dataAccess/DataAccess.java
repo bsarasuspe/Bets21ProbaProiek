@@ -395,7 +395,6 @@ public boolean existQuestion(Event event, String question) {
 			try {
 				ApostuaEginDos(DiruKantitaea*i.getPortzentaia(user), i, pronosticolocal,user);
 			}catch (IncorrectBetException e) {
-				// TODO: mandar correo electronico
 			}
 		}
 		return user;
