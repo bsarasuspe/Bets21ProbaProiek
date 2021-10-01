@@ -9,8 +9,15 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import configuration.ConfigXML;
+import configuration.UtilDate;
+import domain.Admin;
+import domain.Apostua;
 import domain.Event;
+import domain.Pronostico;
 import domain.Question;
+import domain.RegisteredUser;
+import domain.Worker;
+import exceptions.UserAlreadyExist;
 
 public class TestDataAccess {
 	protected  EntityManager  db;
@@ -88,6 +95,25 @@ public class TestDataAccess {
 			} else 
 			return false;
 			
+		}
+		
+		public void addUser(String Izena, String Id, String Email, String Pasahitza, int urtea, int hilabetea, int eguna, long BankuZenbakia,int tipo) throws UserAlreadyExist{//0=Admin,1=worker,2=register user
+			db.getTransaction().begin();
+			db.persist(new RegisteredUser(Izena, Pasahitza, Email, Id, BankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna)));
+		}
+		
+		public void addPronostico(String Erantzuna, double Cuota,Question galdera) {
+			db.getTransaction().begin();
+			db.persist(new Pronostico(Erantzuna,Cuota,galdera));
+		}
+		
+		public boolean existApostua(Apostua ap) {
+			System.out.println(">> DataAccessTest: existApostua");
+			Apostua a = db.find(Apostua.class, ap.getId());
+			if (a!=null) {
+				return true;
+			} else 
+			return false;
 		}
 }
 
