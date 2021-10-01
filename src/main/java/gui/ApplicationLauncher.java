@@ -81,7 +81,7 @@ public class ApplicationLauncher {
 			//a.jLabelSelectOption.setForeground(Color.RED);	
 			
 			System.out.println("Error in ApplicationLauncher: "+e.toString());
-			e.printStackTrace();//TODO eliminar esto (para hacer debuging)
+			e.printStackTrace();
 		}
 		//a.pack();
 
