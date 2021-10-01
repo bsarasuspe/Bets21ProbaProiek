@@ -19,7 +19,7 @@ public abstract class User implements Serializable {
 	private String username;
 	private String password;
 	private String email;
-	private String id;//TODO esta mierda no hace falta
+	private String id;
 	
 	User(){
 		/*this.username = "";
