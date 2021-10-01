@@ -79,7 +79,7 @@ public class MultibetingGUI {
 		btnEliminar = new JButton(ResourceBundle.getBundle("Etiquetas").getString("btnEliminar"));
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (tableQueries.getSelectedRow()>=0&tableQueries.getSelectedRow()<pronostico.size()) {
+				if (tableQueries.getSelectedRow()>=0 && tableQueries.getSelectedRow()<pronostico.size()) {
 					multiplicador/=pronostico.get(tableQueries.getSelectedRow()).getCuota();
 					actualizar();
 					pronostico.remove(tableQueries.getSelectedRow());
