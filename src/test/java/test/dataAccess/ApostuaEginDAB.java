@@ -55,7 +55,7 @@ public class ApostuaEginDAB {
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail  
 			fail();
-			} finally {
+			} finally {//
 				  //Remove the created objects in the database (cascade removing)   
 				testDA.open();
 		          boolean b=testDA.removeUser(user);

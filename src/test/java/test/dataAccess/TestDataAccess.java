@@ -104,7 +104,7 @@ public class TestDataAccess {
 		
 		public void addPronostico(String Erantzuna, double Cuota,Question galdera) {
 			db.getTransaction().begin();
-			db.persist(new Pronostico(Erantzuna,Cuota,galdera));
+			db.persist(new Pronostico(Erantzuna,Cuota,galdera));//
 		}
 		
 		public boolean existApostua(Apostua ap) {
