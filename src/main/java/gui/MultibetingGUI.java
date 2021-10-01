@@ -30,7 +30,7 @@ public class MultibetingGUI {
 	private JLabel labelDineroTotalGanado;
 	private JLabel labelMultiplicador;
 	//
-	private double DiruKantitaea;
+	private double diruKantitaea;
 	private RegisteredUser usuario;
 	private Vector<Pronostico>  pronostico;
 	private double multiplicador;
@@ -47,7 +47,7 @@ public class MultibetingGUI {
 			ResourceBundle.getBundle("Etiquetas").getString("PronoticoCuota"), 
 	};
 	private JButton btnNewButton;
-	//
+	// 
 	
 	/**
 	 * Create the application.
@@ -56,7 +56,7 @@ public class MultibetingGUI {
 		this.multiplicador=1;
 		this.BLFacade=BLFacade;
 		this.origen=origen;
-		this.DiruKantitaea=0;
+		this.diruKantitaea=0;
 		this.usuario=usuario;
 		pronostico=new Vector<Pronostico>();
 		initialize();
@@ -103,7 +103,7 @@ public class MultibetingGUI {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					origen.loged(BLFacade.ApostuaEgin(DiruKantitaea, usuario, pronostico));
+					origen.loged(BLFacade.ApostuaEgin(diruKantitaea, usuario, pronostico));
 					multiplicador=0;
 					for(int i=0;i<pronostico.size();i++) {
 						tableModelPronotiko.removeRow(0);
@@ -135,7 +135,7 @@ public class MultibetingGUI {
 			labelDineroTotalGanado.setText(ResourceBundle.getBundle("Etiquetas").getString("labelDineroTotalGanado2"));
 			labelMultiplicador.setText("");
 		}else {
-		this.DiruKantitaea=DiruKantitaea;
+		this.diruKantitaea=DiruKantitaea;
 		this.pronostico.add(pronostico);
 		Vector<String> row = new Vector<String>();
 		Question galdera = BLFacade.GalderaLortu(pronostico);
@@ -154,7 +154,7 @@ public class MultibetingGUI {
 	
 	private void actualizar() {
 		labelDineroTotalGanado.setForeground(new Color(51,51,51));
-		labelDineroTotalGanado.setText((ResourceBundle.getBundle("Etiquetas").getString("labelDineroTotalGanado3"))  +"= "+this.DiruKantitaea*this.multiplicador);
+		labelDineroTotalGanado.setText((ResourceBundle.getBundle("Etiquetas").getString("labelDineroTotalGanado3"))  +"= "+this.diruKantitaea*this.multiplicador);
 		labelMultiplicador.setText((ResourceBundle.getBundle("Etiquetas").getString("labelMultiplicador"))+ "= "+this.multiplicador);
 	}
 }

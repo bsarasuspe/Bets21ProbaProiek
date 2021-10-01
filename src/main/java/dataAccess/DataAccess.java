@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
-import javax.jws.WebMethod;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -216,7 +215,7 @@ public class DataAccess  {
 			
 			db.getTransaction().begin();
 			Question q = ev.addQuestion(question, betMinimum);
-			//db.persist(q);
+			
 			db.persist(ev); // db.persist(q) not required when CascadeType.PERSIST is added in questions property of Event class
 							// @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 			db.getTransaction().commit();
