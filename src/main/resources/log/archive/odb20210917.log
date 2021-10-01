@@ -1,0 +1,124 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-09-17 09:46:34 #1 store] 
+Database 'C:\Users\ehu\Desktop\Bets21\src\main\resources\bets.temp' is opened by 3220@U111531
+
+[2021-09-17 09:46:35 #2 type.registry] 
+New type domain.Event
+
+[2021-09-17 09:46:35 #3 type] 
+Type domain.Event is not enhanced.
+
+[2021-09-17 09:46:35 #4 type.registry] 
+New type domain.Question
+
+[2021-09-17 09:46:35 #5 type.registry] 
+New type java.util.Vector<domain.Question>
+
+[2021-09-17 09:46:35 #6 type] 
+Type domain.Question is not enhanced.
+
+[2021-09-17 09:46:35 #7 type.registry] 
+New type domain.Pronostico
+
+[2021-09-17 09:46:35 #8 type.registry] 
+New type java.util.ArrayList<domain.Pronostico>
+
+[2021-09-17 09:46:35 #9 type] 
+Type domain.Pronostico is not enhanced.
+
+[2021-09-17 09:46:35 #10 type.registry] 
+New type domain.Apostua
+
+[2021-09-17 09:46:35 #11 type.registry] 
+New type java.util.ArrayList<domain.Apostua>
+
+[2021-09-17 09:46:35 #12 type] 
+Type domain.Apostua is not enhanced.
+
+[2021-09-17 09:46:35 #13 type.registry] 
+New type domain.User
+
+[2021-09-17 09:46:35 #14 type.registry] 
+New type domain.RegisteredUser
+
+[2021-09-17 09:46:35 #15 type] 
+Type domain.User is not enhanced.
+
+[2021-09-17 09:46:35 #16 type] 
+Type domain.RegisteredUser is not enhanced.
+
+[2021-09-17 09:46:35 #17 type.registry] 
+New type java.util.Vector<domain.RegisteredUser>
+
+[2021-09-17 09:46:35 #18 type.registry] 
+New type java.util.Vector<java.lang.Double>
+
+[2021-09-17 09:46:35 #19 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2021-09-17 09:46:35 #20 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-09-17 09:46:49 #1 store] 
+Database 'C:\Users\ehu\Desktop\Bets21\src\main\resources\bets.temp' is opened by 14308@U111531
+
+[2021-09-17 09:46:49 #2 type.registry] 
+New type domain.Event
+
+[2021-09-17 09:46:49 #3 type] 
+Type domain.Event is not enhanced.
+
+[2021-09-17 09:46:49 #4 type.registry] 
+New type domain.Question
+
+[2021-09-17 09:46:49 #5 type.registry] 
+New type java.util.Vector<domain.Question>
+
+[2021-09-17 09:46:49 #6 type] 
+Type domain.Question is not enhanced.
+
+[2021-09-17 09:46:49 #7 type.registry] 
+New type domain.Pronostico
+
+[2021-09-17 09:46:49 #8 type.registry] 
+New type java.util.ArrayList<domain.Pronostico>
+
+[2021-09-17 09:46:49 #9 type] 
+Type domain.Pronostico is not enhanced.
+
+[2021-09-17 09:46:49 #10 type.registry] 
+New type domain.Apostua
+
+[2021-09-17 09:46:49 #11 type.registry] 
+New type java.util.ArrayList<domain.Apostua>
+
+[2021-09-17 09:46:49 #12 type] 
+Type domain.Apostua is not enhanced.
+
+[2021-09-17 09:46:49 #13 type.registry] 
+New type domain.User
+
+[2021-09-17 09:46:49 #14 type.registry] 
+New type domain.RegisteredUser
+
+[2021-09-17 09:46:49 #15 type] 
+Type domain.User is not enhanced.
+
+[2021-09-17 09:46:49 #16 type] 
+Type domain.RegisteredUser is not enhanced.
+
+[2021-09-17 09:46:49 #17 type.registry] 
+New type java.util.Vector<domain.RegisteredUser>
+
+[2021-09-17 09:46:49 #18 type.registry] 
+New type java.util.Vector<java.lang.Double>
+
+[2021-09-17 09:46:49 #19 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2021-09-17 09:46:49 #20 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
