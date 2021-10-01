@@ -3,6 +3,7 @@ package test.dataAccess;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -97,23 +98,41 @@ public class TestDataAccess {
 			
 		}
 		
-		public void addUser(String Izena, String Id, String Email, String Pasahitza, int urtea, int hilabetea, int eguna, long BankuZenbakia,int tipo) throws UserAlreadyExist{//0=Admin,1=worker,2=register user
+		public RegisteredUser addUser(String Izena, String Id, String Email, String Pasahitza, int urtea, int hilabetea, int eguna, long BankuZenbakia,int tipo) throws UserAlreadyExist{//0=Admin,1=worker,2=register user
+			System.out.println(">> DataAccessTest: addUser");
 			db.getTransaction().begin();
-			db.persist(new RegisteredUser(Izena, Pasahitza, Email, Id, BankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna)));
+			RegisteredUser u = new RegisteredUser(Izena, Pasahitza, Email, Id, BankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
+			db.persist(u);
+			db.getTransaction().commit();
+			return u;
 		}
 		
-		public void addPronostico(String Erantzuna, double Cuota,Question galdera) {
+		public Pronostico addPronostico(String Erantzuna, double Cuota,Question galdera) {
+			System.out.println(">> DataAccessTest: addPronostico");
+			Question q = db.find(Question.class, galdera.getQuestionNumber());
 			db.getTransaction().begin();
-			db.persist(new Pronostico(Erantzuna,Cuota,galdera));//
+			Pronostico p = null;
+			try {
+				p = new Pronostico(Erantzuna,Cuota,q);
+				db.persist(p);
+				db.getTransaction().commit();
+			}
+			catch (Exception e){
+				e.printStackTrace();
+			}
+			return p;
 		}
 		
-		public boolean existApostua(Apostua ap) {
-			System.out.println(">> DataAccessTest: existApostua");
-			Apostua a = db.find(Apostua.class, ap.getId());
-			if (a!=null) {
+		public boolean removeUser(RegisteredUser user) {
+			System.out.println(">> DataAccessTest: removeUser");
+			RegisteredUser u = db.find(RegisteredUser.class, user.getUsername());
+			if (u!=null) {
+				db.getTransaction().begin();
+				db.remove(u);
+				db.getTransaction().commit();
 				return true;
 			} else 
 			return false;
-		}
+	    }
 }
 

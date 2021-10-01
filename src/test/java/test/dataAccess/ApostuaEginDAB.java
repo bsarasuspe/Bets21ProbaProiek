@@ -17,7 +17,10 @@ import domain.Event;
 import domain.Pronostico;
 import domain.Question;
 import domain.RegisteredUser;
+import domain.User;
+import exceptions.IncorrectBetException;
 import exceptions.QuestionAlreadyExist;
+import exceptions.UserAlreadyExist;
 
 public class ApostuaEginDAB {
 
@@ -28,37 +31,295 @@ public class ApostuaEginDAB {
 	 static TestDataAccess testDA=new TestDataAccess();
 
 	private Apostua ap;
-	private RegisteredUser u, user;
+	private RegisteredUser user, u;
+	private Event ev;
+	private Question q;
+	private Pronostico p;
 	
-	@Test
-	//sut.createQuestion:  The event has NOT one question with a queryText. 
-	public void test1() {
+	@Test 
+	public void test1() throws UserAlreadyExist, IncorrectBetException {
 		try {
 			
 			//define paramaters
-			Event ev = new Event(72, "Futbol partidua", new Date());
-			Question q = new Question(210, "Nork irabaziko du?", 10, ev);
+			String eventText="event1";
+			String queryText="query1";
+			Float betMinimum=new Float(5);
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate=null;;
+			try {
+				oneDate = sdf.parse("05/10/2022");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
 			
 			//configure the state of the system (create object in the dabatase)
 			testDA.open();
-			testDA.addUser("Beñat", "bsarasua", "bsarasua@gmail.com", "pass", 2001, 6, 13, 34534, 2);
-			testDA.addPronostico("Atletic", 2.1,q);
+			user = testDA.addUser("Beñat", "bsarasua", "bsarasua@ehu.eus", "pass", 2001, 10, 21, 123, 2);
+			ev = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
+			q = ev.getQuestions().get(0);
+			p = testDA.addPronostico("Atletic", 2, q);
+			Vector<Pronostico> pro = new Vector<Pronostico>();
+			pro.add(p);
 			testDA.close();			
 			
-			//invoke System Under Test (sut) 
-			user = sut.ApostuaEgin(10,u,p);
+			//invoke System Under Test (sut)  
+			u = sut.ApostuaEgin(10.0, user, pro);
 			
 			//verify the results
-			assertTrue(user!=null);
+			assertTrue(u!=null);
 			
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
-			// if the program goes to this point fail  
+			// if the program goes to this point fail 
 			fail();
-			} finally {//
-				  //Remove the created objects in the database (cascade removing)   
+			} finally {
+				  //Remove the created objects in the database (cascade removing)  
 				testDA.open();
-		          boolean b=testDA.removeUser(user);
+					boolean c=testDA.removeEvent(ev);
+					boolean b=testDA.removeUser(user);
+		          testDA.close();
+		      //     System.out.println("Finally "+b);          
+		        }
+		   }
+	
+	@Test 
+	public void test2() throws UserAlreadyExist, IncorrectBetException {
+		try {
+			
+			//define paramaters
+			String eventText="event1";
+			String queryText="query1";
+			Float betMinimum=new Float(5);
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate=null;;
+			try {
+				oneDate = sdf.parse("05/10/2022");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			
+			//configure the state of the system (create object in the dabatase)
+			testDA.open();
+			user = testDA.addUser("Beñat", "bsarasua", "bsarasua@ehu.eus", "pass", 2001, 10, 21, 123, 2);
+			ev = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
+			q = ev.getQuestions().get(0);
+			p = testDA.addPronostico("Atletic", 2, q);
+			Vector<Pronostico> pro = new Vector<Pronostico>();
+			pro.add(p);
+			testDA.close();		
+			
+			System.out.println(user.getUsername()+" "+ev.getEventNumber()+" "+q.getQuestion()+" "+p.getErantzuna());
+			//invoke System Under Test (sut)  
+			u = sut.ApostuaEgin(10.0, user, pro);
+
+			//verify the results
+			assertTrue(u!=null);
+			
+		   } catch (Exception e) {
+			// TODO Auto-generated catch block
+			// if the program goes to this point fail 
+			fail();
+			} finally {
+				  //Remove the created objects in the database (cascade removing)  
+				System.out.println("froga"+user.getUsername()+" "+ev.getEventNumber());
+				testDA.open();
+				boolean c=testDA.removeEvent(ev);
+				boolean b=testDA.removeUser(user);
+		          testDA.close();
+		      //     System.out.println("Finally "+b);          
+		        }
+		   }
+	
+	@Test
+	public void test3() throws UserAlreadyExist, IncorrectBetException {
+		try {
+			
+			//define paramaters
+			String eventText="event1";
+			String queryText="query1";
+			Float betMinimum=new Float(2);
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate=null;;
+			try {
+				oneDate = sdf.parse("05/10/2022");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			
+			//configure the state of the system (create object in the dabatase)
+			testDA.open();
+			user = testDA.addUser("Beñat", "bsarasua", "bsarasua@ehu.eus", "pass", 2001, 10, 21, 123, 2);
+			ev = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
+			q = ev.getQuestions().get(0);
+			p = testDA.addPronostico("Atletic", 2, q);
+			Vector<Pronostico> pro = new Vector<Pronostico>();
+			pro.add(p);
+			testDA.close();			
+			
+			//invoke System Under Test (sut)  
+			u = sut.ApostuaEgin(5.3, null, pro);
+			
+			//verify the results
+			assertTrue(u!=null);
+			
+		   } catch (Exception e) {
+			// TODO Auto-generated catch block
+			// if the program goes to this point fail 
+			fail();
+			} finally {
+				  //Remove the created objects in the database (cascade removing)  
+				testDA.open();
+				boolean c=testDA.removeEvent(ev);
+				boolean b=testDA.removeUser(user);
+		          testDA.close();
+		      //     System.out.println("Finally "+b);          
+		        }
+		   }
+	
+	@Test
+	public void test4() throws UserAlreadyExist, IncorrectBetException {
+		try {
+			
+			//define paramaters
+			String eventText="event1";
+			String queryText="query1";
+			Float betMinimum=new Float(2);
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate=null;;
+			try {
+				oneDate = sdf.parse("05/10/2022");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			
+			//configure the state of the system (create object in the dabatase)
+			testDA.open();
+			user = testDA.addUser("Beñat", "bsarasua", "bsarasua@ehu.eus", "pass", 2001, 10, 21, 123, 2);
+			ev = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
+			q = ev.getQuestions().get(0);
+			p = testDA.addPronostico("Atletic", 2, q);
+			Vector<Pronostico> pro = new Vector<Pronostico>();
+			pro.add(p);
+			testDA.close();			
+			
+			//invoke System Under Test (sut)  
+			u = sut.ApostuaEgin(5.3, user, null);
+			
+			//verify the results
+			assertTrue(u!=null);
+			
+		   } catch (Exception e) {
+			// TODO Auto-generated catch block
+			// if the program goes to this point fail 
+			fail();
+			} finally {
+				  //Remove the created objects in the database (cascade removing)  
+				testDA.open();
+				boolean c=testDA.removeEvent(ev);
+				boolean b=testDA.removeUser(user);
+		          testDA.close();
+		      //     System.out.println("Finally "+b);          
+		        }
+		   }
+	
+	@Test
+	public void test5() throws UserAlreadyExist, IncorrectBetException {
+		try {
+			
+			//define paramaters
+			String eventText="event1";
+			String queryText="query1";
+			Float betMinimum=new Float(2);
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate=null;;
+			try {
+				oneDate = sdf.parse("05/10/2022");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			
+			//configure the state of the system (create object in the dabatase)
+			testDA.open();
+			ev = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
+			q = ev.getQuestions().get(0);
+			p = testDA.addPronostico("Atletic", 2, q);
+			Vector<Pronostico> pro = new Vector<Pronostico>();
+			pro.add(p);
+			testDA.close();			
+			
+			//invoke System Under Test (sut)  
+			u = sut.ApostuaEgin(5.3, null, pro);
+			
+			//verify the results
+			assertTrue(u!=null);
+			
+		   } catch (Exception e) {
+			// TODO Auto-generated catch block
+			// if the program goes to this point fail 
+			fail();
+			} finally {
+				  //Remove the created objects in the database (cascade removing)  
+				testDA.open();
+				boolean c=testDA.removeEvent(ev);
+				boolean b=testDA.removeUser(user);
+		          testDA.close();
+		      //     System.out.println("Finally "+b);          
+		        }
+		   }
+	
+	@Test
+	//sut.createQuestion:  The event has NOT one question with a queryText. 
+	public void test6() throws UserAlreadyExist, IncorrectBetException {
+		try {
+			
+			//define paramaters
+			String eventText="event1";
+			String queryText="query1";
+			Float betMinimum=new Float(2);
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate=null;;
+			try {
+				oneDate = sdf.parse("05/10/2022");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			
+			//configure the state of the system (create object in the dabatase)
+			testDA.open();
+			user = testDA.addUser("Beñat", "bsarasua", "bsarasua@ehu.eus", "pass", 2001, 10, 21, 123, 2);
+			ev = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
+			q = ev.getQuestions().get(0);
+			Vector<Pronostico> pro = new Vector<Pronostico>();
+			pro.add(p);
+			testDA.close();			
+			
+			//invoke System Under Test (sut)  
+			u = sut.ApostuaEgin(5.3, null, pro);
+			
+			//verify the results
+			assertTrue(u!=null);
+			
+		   } catch (Exception e) {
+			// TODO Auto-generated catch block
+			// if the program goes to this point fail 
+			fail();
+			} finally {
+				  //Remove the created objects in the database (cascade removing)  
+				testDA.open();
+				boolean c=testDA.removeEvent(ev);
+				boolean b=testDA.removeUser(user);
 		          testDA.close();
 		      //     System.out.println("Finally "+b);          
 		        }
