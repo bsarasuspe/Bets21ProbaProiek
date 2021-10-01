@@ -10,7 +10,9 @@ import javax.persistence.Persistence;
 
 import configuration.ConfigXML;
 import domain.Event;
+import domain.Pronostico;
 import domain.Question;
+import exceptions.ForecastAlreadyExist;
 
 public class TestDataAccess {
 	protected  EntityManager  db;
@@ -85,6 +87,29 @@ public class TestDataAccess {
 			Event e = db.find(Event.class, ev.getEventNumber());
 			if (e!=null) {
 				return e.DoesQuestionExists(q.getQuestion());
+			} else 
+			return false;
+			
+		}
+		public Question createForecast(Question galdera,String izena,double multiplikadorea) throws ForecastAlreadyExist{
+			
+			db.getTransaction().begin();
+			Question local=db.createQuery("SELECT q FROM Question q where q.questionNumber="+galdera.getQuestionNumber()+"", Question.class).getResultList().get(0);
+			Pronostico tmp=local.addPronostico(izena, multiplikadorea);
+			db.persist(tmp);
+			db.persist(local);
+			db.getTransaction().commit();
+			return local;
+		}
+		public boolean removeForecast(Pronostico fr){
+			
+			System.out.println(">> DataAccessTest: removeEvent");
+			Pronostico f = db.find(Pronostico.class, fr.getId());
+			if (f!=null) {
+				db.getTransaction().begin();
+				db.remove(f);
+				db.getTransaction().commit();
+				return true;
 			} else 
 			return false;
 			

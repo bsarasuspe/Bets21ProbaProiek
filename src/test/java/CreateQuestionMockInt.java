@@ -40,7 +40,7 @@ public class CreateQuestionMockInt {
 			try {
 				//define paramaters
 				String queryText="proba galdera";
-				Float betMinimum=new Float(2);
+				Float betMinimum= (float) 2;
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 				Date oneDate=null;;
 				try {
@@ -89,7 +89,7 @@ public class CreateQuestionMockInt {
 		try {
 			//define paramaters
 			String queryText="proba galdera";
-			Float betMinimum=new Float(2);
+			Float betMinimum=(float) 2;
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date oneDate=null;;
 			try {
@@ -130,7 +130,7 @@ public class CreateQuestionMockInt {
 		try {
 			//define paramaters
 			String queryText="proba galdera";
-			Float betMinimum=new Float(2);
+			Float betMinimum=(float)2;
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date oneDate=null;;
 			try {
