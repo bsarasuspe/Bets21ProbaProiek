@@ -64,6 +64,10 @@ public RegisteredUser getUsuarioa() {
 	return usuarioa;
 }
 
+public Integer getId() {
+	return id;
+}
+
 public double getKantitatea() {
 	return kantitatea;
 }
