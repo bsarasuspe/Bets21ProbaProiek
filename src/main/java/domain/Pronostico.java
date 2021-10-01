@@ -22,7 +22,7 @@ public class Pronostico implements Serializable {
 @XmlID
 @XmlJavaTypeAdapter(IntegerAdapter.class)
 private Integer id;
-private String Erantzuna;
+private String erantzuna;
 private double Cuota;
 @XmlIDREF
 private Question galdera;
@@ -31,7 +31,7 @@ private ArrayList<Apostua> apostuak;
 private boolean estado;//Si es true se ha decidico ya la respuesta
 
 public Pronostico (String Erantzuna, double Cuota,Question galdera) {
-	this.Erantzuna=Erantzuna;
+	this.erantzuna=Erantzuna;
 	this.Cuota=Cuota;
 	this.galdera=galdera;
 	this.apostuak=new ArrayList<Apostua>();
@@ -46,7 +46,6 @@ public boolean equals (Object entrada) {
 		return false;
 	}
 	if (entrada instanceof Pronostico) {
-		//return this.Erantzuna.equals(((Pronostico)entrada).Erantzuna);
 		return this.id==((Pronostico)entrada).id;
 	}
 	return false;
@@ -54,7 +53,7 @@ public boolean equals (Object entrada) {
 
 @Override
 public String toString () {
-	return Erantzuna+" : "+Cuota;
+	return erantzuna+" : "+Cuota;
 }
 
 /*public void apostuaEgin(double DiruKantitatea, RegisteredUser usuarioa) {
@@ -80,7 +79,7 @@ public int getId() {
 }
 
 public String getErantzuna() {
-	return Erantzuna;
+	return erantzuna;
 }
 
 public Question getGaldera() {
