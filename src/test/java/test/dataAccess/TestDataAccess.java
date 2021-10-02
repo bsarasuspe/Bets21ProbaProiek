@@ -169,5 +169,17 @@ public class TestDataAccess {
 				throw e;
 			}
 		}
+		public boolean removeForecast(Pronostico fr){
+			
+			System.out.println(">> DataAccessTest: removeEvent");
+			Pronostico f = db.find(Pronostico.class, fr.getId());
+			if (f!=null) {
+				db.getTransaction().begin();
+				db.remove(f);
+				db.getTransaction().commit();
+				return true;
+			} else 
+			return false;
+		}
 }
 
