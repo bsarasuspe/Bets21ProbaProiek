@@ -64,7 +64,6 @@ public class IrabaziDAB {
 		Pronostico iraPro = null;
 		
 		//set up test data base
-		testDA.;
 		
 		
 		//invoke System Under Test (sut) 
@@ -77,7 +76,32 @@ public class IrabaziDAB {
 		}
 		}
 	@Test
-	//sut.createQuestion:  The event has NOT one question with a queryText. 
+	//sut.createQuestion:  The user is not in the data base. 
 	public void test3() {
+		
+		//define parameters
+		String forename="forecast1";
+		double percentage=0.5;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date date=null;
+		try {
+			date = sdf.parse("05/10/2022");
+		} 
+		catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		Question question = new Question(1, "galderaTextu", 500, new Event(1, "Deskribapena",date));
+		Pronostico iraPro = new Pronostico(forename,percentage,question);
+		
+		//invoke System Under Test (sut) 
+		try {
+			sut.irabazi(iraPro);
+			fail();
+		}
+		catch(Exception e) {
+			assertTrue(true);
+		}
+		
 	}
 }
