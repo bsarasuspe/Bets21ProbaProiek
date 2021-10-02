@@ -18,6 +18,8 @@ import domain.Pronostico;
 import domain.Question;
 import domain.RegisteredUser;
 import domain.Worker;
+import exceptions.JarraitzenZenuenException;
+import exceptions.MutualFollowingException;
 import exceptions.UserAlreadyExist;
 
 public class TestDataAccess {
@@ -134,5 +136,38 @@ public class TestDataAccess {
 			} else 
 			return false;
 	    }
+		
+		public boolean removeApostua(Integer id) {
+			System.out.println(">> DataAccessTest: removeApostua");
+			Apostua a = db.find(Apostua.class, id);
+			if (a!=null) {
+				db.getTransaction().begin();
+				db.remove(a);
+				db.getTransaction().commit();
+				return true;
+			} else 
+			return false;
+	    }
+		
+		public RegisteredUser jarraitu(RegisteredUser Jarraitzailea,String Jarraitua,double porcentage) throws MutualFollowingException,JarraitzenZenuenException {
+			System.out.println(">> DataAccessTest: jarraitu");
+			db.getTransaction().begin();
+			RegisteredUser JarraitzaileaLocal=db.find(RegisteredUser.class, Jarraitzailea);
+			try {
+				RegisteredUser JarrairuaLocal=db.find(RegisteredUser.class, new RegisteredUser(Jarraitua, "", "", "699999", 0, null));//no se si hay que mirar si es null
+				System.out.println(JarraitzaileaLocal.getUsername()+">> jarraitu "+JarrairuaLocal.getUsername());
+				JarraitzaileaLocal.seguir(JarrairuaLocal/*persona a seguir*/, porcentage);
+				db.persist(JarrairuaLocal);
+				db.persist(JarraitzaileaLocal);
+				db.getTransaction().commit();
+				return JarraitzaileaLocal;
+			}catch (MutualFollowingException e){
+				db.getTransaction().rollback();
+				throw e;
+			}catch (JarraitzenZenuenException e) {
+				db.getTransaction().rollback();
+				throw e;
+			}
+		}
 }
 

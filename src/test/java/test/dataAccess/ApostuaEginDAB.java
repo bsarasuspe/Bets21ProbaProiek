@@ -79,6 +79,7 @@ public class ApostuaEginDAB {
 				testDA.open();
 					boolean c=testDA.removeEvent(ev);
 					boolean b=testDA.removeUser(user);
+					boolean d=testDA.removeApostua(4);
 		          testDA.close();
 		      //     System.out.println("Finally "+b);          
 		        }
@@ -92,6 +93,11 @@ public class ApostuaEginDAB {
 			String eventText="event1";
 			String queryText="query1";
 			Float betMinimum=new Float(5);
+			Double proba = 3.0;
+			
+			if (betMinimum>proba) {
+				System.out.println("proba");
+			}
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date oneDate=null;;
@@ -112,9 +118,8 @@ public class ApostuaEginDAB {
 			pro.add(p);
 			testDA.close();		
 			
-			System.out.println(user.getUsername()+" "+ev.getEventNumber()+" "+q.getQuestion()+" "+p.getErantzuna());
 			//invoke System Under Test (sut)  
-			u = sut.ApostuaEgin(10.0, user, pro);
+			u = sut.ApostuaEgin(3.0, user, pro);
 
 			//verify the results
 			assertTrue(u!=null);
@@ -163,7 +168,7 @@ public class ApostuaEginDAB {
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  
-			u = sut.ApostuaEgin(5.3, null, pro);
+			u = sut.ApostuaEgin(6.0, null, pro);
 			
 			//verify the results
 			assertTrue(u!=null);
@@ -211,7 +216,7 @@ public class ApostuaEginDAB {
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  
-			u = sut.ApostuaEgin(5.3, user, null);
+			u = sut.ApostuaEgin(6.0, user, null);
 			
 			//verify the results
 			assertTrue(u!=null);
@@ -258,7 +263,7 @@ public class ApostuaEginDAB {
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  
-			u = sut.ApostuaEgin(5.3, null, pro);
+			u = sut.ApostuaEgin(5.3, user, pro);
 			
 			//verify the results
 			assertTrue(u!=null);
@@ -271,7 +276,6 @@ public class ApostuaEginDAB {
 				  //Remove the created objects in the database (cascade removing)  
 				testDA.open();
 				boolean c=testDA.removeEvent(ev);
-				boolean b=testDA.removeUser(user);
 		          testDA.close();
 		      //     System.out.println("Finally "+b);          
 		        }
@@ -306,7 +310,7 @@ public class ApostuaEginDAB {
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  
-			u = sut.ApostuaEgin(5.3, null, pro);
+			u = sut.ApostuaEgin(5.3, user, pro);
 			
 			//verify the results
 			assertTrue(u!=null);

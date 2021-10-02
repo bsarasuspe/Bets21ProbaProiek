@@ -377,6 +377,7 @@ public boolean existQuestion(Event event, String question) {
 		for (Pronostico i:pronostico) {
 			tmp=db.find(Pronostico.class, i);
 			if (tmp.getGaldera().getBetMinimum()>DiruKantitaea) {
+				System.out.println("Froga bat da");
 				throw new IncorrectBetException();
 			}
 			pronosticolocal.add(tmp);
