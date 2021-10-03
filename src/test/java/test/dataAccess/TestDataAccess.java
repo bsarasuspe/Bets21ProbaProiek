@@ -18,6 +18,7 @@ import domain.Pronostico;
 import domain.Question;
 import domain.RegisteredUser;
 import domain.Worker;
+import exceptions.IncorrectBetException;
 import exceptions.JarraitzenZenuenException;
 import exceptions.MutualFollowingException;
 import exceptions.UserAlreadyExist;
@@ -207,5 +208,51 @@ public void addQuestion(Question qu) {
 		e.printStackTrace();
 	}
 }
+
+public Apostua addBet(double DiruKantitaea,RegisteredUser usuario, Vector<Pronostico>  pronostico) throws IncorrectBetException{
+	db.getTransaction().begin();
+	Vector<Pronostico> pronosticolocal=new Vector<Pronostico>();
+	Pronostico tmp;
+	for (Pronostico i:pronostico) {
+		tmp=db.find(Pronostico.class, i);
+		pronosticolocal.add(tmp);
+	}
+	RegisteredUser user = db.find(RegisteredUser.class, usuario.getUsername());
+	Apostua apostua=new Apostua(DiruKantitaea, user, pronosticolocal);
+	user.setBalance(usuario.getBalance()-DiruKantitaea);
+	db.persist(user);
+	db.persist(apostua);
+	for (Pronostico i:pronosticolocal) {
+		db.persist(i);
+	}
+	db.getTransaction().commit();
+	return apostua;
+}
+
+public Apostua addBetJarraitzaile (double DiruKantitaea,RegisteredUser usuario, 
+		Vector<Pronostico> pronostico,RegisteredUser mandon) throws IncorrectBetException{
+	db.getTransaction().begin();
+	Vector<Pronostico> pronosticolocal=new Vector<Pronostico>();
+	Pronostico tmp;
+	for (Pronostico i:pronostico) {
+		tmp=db.find(Pronostico.class, i);
+		if (tmp.getGaldera().getBetMinimum()>DiruKantitaea) {
+			throw new IncorrectBetException();
+		}
+		pronosticolocal.add(tmp);
+	}
+
+	RegisteredUser user = db.find(RegisteredUser.class, usuario.getUsername());
+	Apostua apostua=new Apostua(DiruKantitaea, user, pronosticolocal,mandon);
+	user.setBalance(usuario.getBalance()-DiruKantitaea);
+	db.persist(user);
+	db.persist(apostua);
+	for (Pronostico i:pronosticolocal) {
+		db.persist(i);
+	}
+	db.getTransaction().commit();
+	return apostua;
+}
+
 }
 
