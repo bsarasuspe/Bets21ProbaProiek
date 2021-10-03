@@ -181,5 +181,31 @@ public class TestDataAccess {
 			} else 
 			return false;
 		}
+		
+public boolean removeQuestion(Question qu){
+			
+			System.out.println(">> DataAccessTest: removeQuestion");
+			Question q = db.find(Question.class, qu.getQuestionNumber());
+			if (q!=null) {
+				db.getTransaction().begin();
+				db.remove(q);
+				db.getTransaction().commit();
+				return true;
+			} else 
+			return false;
+		}
+
+
+public void addQuestion(Question qu) {
+	System.out.println(">> DataAccessTest: addQuestion");
+	db.getTransaction().begin();
+	try {
+		db.persist(qu);
+		db.getTransaction().commit();
+	}
+	catch (Exception e){
+		e.printStackTrace();
+	}
+}
 }
 
