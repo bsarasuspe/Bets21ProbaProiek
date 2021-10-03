@@ -66,6 +66,7 @@ public class ApostuaEginMockInt {
 			Mockito.doReturn(user).when(dataAccess).ApostuaEgin(20,Mockito.any(RegisteredUser.class),pro);
 			
 			//verify the results
+			Mockito.verify(dataAccess, Mockito.times(1)).ApostuaEgin(20,Mockito.any(RegisteredUser.class),pro);
 			assertTrue(true);
 			
 		   } catch (Exception e) {
