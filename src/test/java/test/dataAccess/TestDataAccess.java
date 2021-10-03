@@ -151,12 +151,12 @@ public class TestDataAccess {
 			return false;
 	    }
 		
-		public RegisteredUser jarraitu(RegisteredUser Jarraitzailea,String Jarraitua,double porcentage) throws MutualFollowingException,JarraitzenZenuenException {
+		public RegisteredUser jarraitu(RegisteredUser Jarraitzailea,RegisteredUser Jarraitua,double porcentage) throws MutualFollowingException,JarraitzenZenuenException {
 			System.out.println(">> DataAccessTest: jarraitu");
 			db.getTransaction().begin();
 			RegisteredUser JarraitzaileaLocal=db.find(RegisteredUser.class, Jarraitzailea);
 			try {
-				RegisteredUser JarrairuaLocal=db.find(RegisteredUser.class, new RegisteredUser(Jarraitua, "", "", "699999", 0, null));//no se si hay que mirar si es null
+				RegisteredUser JarrairuaLocal=db.find(RegisteredUser.class, Jarraitua.getUsername());//no se si hay que mirar si es null
 				System.out.println(JarraitzaileaLocal.getUsername()+">> jarraitu "+JarrairuaLocal.getUsername());
 				JarraitzaileaLocal.seguir(JarrairuaLocal/*persona a seguir*/, porcentage);
 				db.persist(JarrairuaLocal);
