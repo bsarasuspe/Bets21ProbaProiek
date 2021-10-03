@@ -3324,3 +3324,685 @@ New type domain.Admin
 [2021-10-03 17:34:18 #24 type] 
 Type domain.Admin is not enhanced.
 
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-10-03 20:55:24 #1 store] 
+Database 'C:\Users\bsara\git\Bets21ProbaProiek\src\main\resources\bets.temp' is opened by 3432@LAPTOP-APEB7RIS
+
+[2021-10-03 20:55:24 #2 type.registry] 
+New type domain.User
+
+[2021-10-03 20:55:24 #3 type.registry] 
+New type domain.RegisteredUser
+
+[2021-10-03 20:55:24 #4 type] 
+Type domain.User is not enhanced.
+
+[2021-10-03 20:55:24 #5 type] 
+Type domain.RegisteredUser is not enhanced.
+
+[2021-10-03 20:55:24 #6 type.registry] 
+New type domain.Apostua
+
+[2021-10-03 20:55:24 #7 type.registry] 
+New type java.util.ArrayList<domain.Apostua>
+
+[2021-10-03 20:55:24 #8 type.registry] 
+New type java.util.Vector<domain.RegisteredUser>
+
+[2021-10-03 20:55:24 #9 type.registry] 
+New type java.util.Vector<java.lang.Double>
+
+[2021-10-03 20:55:24 #10 type] 
+Type domain.Apostua is not enhanced.
+
+[2021-10-03 20:55:24 #11 type.registry] 
+New type domain.Pronostico
+
+[2021-10-03 20:55:24 #12 type.registry] 
+New type java.util.ArrayList<domain.Pronostico>
+
+[2021-10-03 20:55:24 #13 type] 
+Type domain.Pronostico is not enhanced.
+
+[2021-10-03 20:55:24 #14 type.registry] 
+New type domain.Question
+
+[2021-10-03 20:55:24 #15 type] 
+Type domain.Question is not enhanced.
+
+[2021-10-03 20:55:24 #16 type.registry] 
+New type domain.Event
+
+[2021-10-03 20:55:24 #17 type] 
+Type domain.Event is not enhanced.
+
+[2021-10-03 20:55:24 #18 type.registry] 
+New type java.util.Vector<domain.Question>
+
+[2021-10-03 20:55:24 #19 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2021-10-03 20:55:24 #20 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-10-03 20:55:52 #1 store] 
+Database 'C:\Users\bsara\git\Bets21ProbaProiek\src\main\resources\bets.temp' is opened by 16476@LAPTOP-APEB7RIS
+
+[2021-10-03 20:55:52 #2 type.registry] 
+New type domain.User
+
+[2021-10-03 20:55:52 #3 type.registry] 
+New type domain.RegisteredUser
+
+[2021-10-03 20:55:52 #4 type] 
+Type domain.User is not enhanced.
+
+[2021-10-03 20:55:52 #5 type] 
+Type domain.RegisteredUser is not enhanced.
+
+[2021-10-03 20:55:52 #6 type.registry] 
+New type domain.Apostua
+
+[2021-10-03 20:55:52 #7 type.registry] 
+New type java.util.ArrayList<domain.Apostua>
+
+[2021-10-03 20:55:52 #8 type.registry] 
+New type java.util.Vector<domain.RegisteredUser>
+
+[2021-10-03 20:55:52 #9 type.registry] 
+New type java.util.Vector<java.lang.Double>
+
+[2021-10-03 20:55:52 #10 type] 
+Type domain.Apostua is not enhanced.
+
+[2021-10-03 20:55:52 #11 type.registry] 
+New type domain.Pronostico
+
+[2021-10-03 20:55:52 #12 type.registry] 
+New type java.util.ArrayList<domain.Pronostico>
+
+[2021-10-03 20:55:52 #13 type] 
+Type domain.Pronostico is not enhanced.
+
+[2021-10-03 20:55:52 #14 type.registry] 
+New type domain.Question
+
+[2021-10-03 20:55:52 #15 type] 
+Type domain.Question is not enhanced.
+
+[2021-10-03 20:55:52 #16 type.registry] 
+New type domain.Event
+
+[2021-10-03 20:55:52 #17 type] 
+Type domain.Event is not enhanced.
+
+[2021-10-03 20:55:52 #18 type.registry] 
+New type java.util.Vector<domain.Question>
+
+[2021-10-03 20:55:52 #19 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2021-10-03 20:55:52 #20 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-10-03 21:00:07 #1 store] 
+Database 'C:\Users\bsara\git\Bets21ProbaProiek\src\main\resources\bets.temp' is opened by 6860@LAPTOP-APEB7RIS
+
+[2021-10-03 21:00:07 #2 type.registry] 
+New type domain.User
+
+[2021-10-03 21:00:07 #3 type.registry] 
+New type domain.RegisteredUser
+
+[2021-10-03 21:00:07 #4 type] 
+Type domain.User is not enhanced.
+
+[2021-10-03 21:00:07 #5 type] 
+Type domain.RegisteredUser is not enhanced.
+
+[2021-10-03 21:00:07 #6 type.registry] 
+New type domain.Apostua
+
+[2021-10-03 21:00:07 #7 type.registry] 
+New type java.util.ArrayList<domain.Apostua>
+
+[2021-10-03 21:00:07 #8 type.registry] 
+New type java.util.Vector<domain.RegisteredUser>
+
+[2021-10-03 21:00:07 #9 type.registry] 
+New type java.util.Vector<java.lang.Double>
+
+[2021-10-03 21:00:07 #10 type] 
+Type domain.Apostua is not enhanced.
+
+[2021-10-03 21:00:07 #11 type.registry] 
+New type domain.Pronostico
+
+[2021-10-03 21:00:07 #12 type.registry] 
+New type java.util.ArrayList<domain.Pronostico>
+
+[2021-10-03 21:00:07 #13 type] 
+Type domain.Pronostico is not enhanced.
+
+[2021-10-03 21:00:07 #14 type.registry] 
+New type domain.Question
+
+[2021-10-03 21:00:07 #15 type] 
+Type domain.Question is not enhanced.
+
+[2021-10-03 21:00:07 #16 type.registry] 
+New type domain.Event
+
+[2021-10-03 21:00:07 #17 type] 
+Type domain.Event is not enhanced.
+
+[2021-10-03 21:00:07 #18 type.registry] 
+New type java.util.Vector<domain.Question>
+
+[2021-10-03 21:00:07 #19 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2021-10-03 21:00:07 #20 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-10-03 21:04:16 #1 store] 
+Database 'C:\Users\bsara\git\Bets21ProbaProiek\src\main\resources\bets.temp' is opened by 4720@LAPTOP-APEB7RIS
+
+[2021-10-03 21:04:16 #2 type.registry] 
+New type domain.User
+
+[2021-10-03 21:04:16 #3 type.registry] 
+New type domain.RegisteredUser
+
+[2021-10-03 21:04:16 #4 type] 
+Type domain.User is not enhanced.
+
+[2021-10-03 21:04:16 #5 type] 
+Type domain.RegisteredUser is not enhanced.
+
+[2021-10-03 21:04:16 #6 type.registry] 
+New type domain.Apostua
+
+[2021-10-03 21:04:16 #7 type.registry] 
+New type java.util.ArrayList<domain.Apostua>
+
+[2021-10-03 21:04:16 #8 type.registry] 
+New type java.util.Vector<domain.RegisteredUser>
+
+[2021-10-03 21:04:16 #9 type.registry] 
+New type java.util.Vector<java.lang.Double>
+
+[2021-10-03 21:04:16 #10 type] 
+Type domain.Apostua is not enhanced.
+
+[2021-10-03 21:04:16 #11 type.registry] 
+New type domain.Pronostico
+
+[2021-10-03 21:04:16 #12 type.registry] 
+New type java.util.ArrayList<domain.Pronostico>
+
+[2021-10-03 21:04:16 #13 type] 
+Type domain.Pronostico is not enhanced.
+
+[2021-10-03 21:04:16 #14 type.registry] 
+New type domain.Question
+
+[2021-10-03 21:04:16 #15 type] 
+Type domain.Question is not enhanced.
+
+[2021-10-03 21:04:16 #16 type.registry] 
+New type domain.Event
+
+[2021-10-03 21:04:16 #17 type] 
+Type domain.Event is not enhanced.
+
+[2021-10-03 21:04:16 #18 type.registry] 
+New type java.util.Vector<domain.Question>
+
+[2021-10-03 21:04:16 #19 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2021-10-03 21:04:16 #20 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-10-03 21:09:00 #1 store] 
+Database 'C:\Users\bsara\git\Bets21ProbaProiek\src\main\resources\bets.temp' is opened by 8944@LAPTOP-APEB7RIS
+
+[2021-10-03 21:09:00 #2 type.registry] 
+New type domain.User
+
+[2021-10-03 21:09:00 #3 type.registry] 
+New type domain.RegisteredUser
+
+[2021-10-03 21:09:00 #4 type] 
+Type domain.User is not enhanced.
+
+[2021-10-03 21:09:00 #5 type] 
+Type domain.RegisteredUser is not enhanced.
+
+[2021-10-03 21:09:00 #6 type.registry] 
+New type domain.Apostua
+
+[2021-10-03 21:09:00 #7 type.registry] 
+New type java.util.ArrayList<domain.Apostua>
+
+[2021-10-03 21:09:00 #8 type.registry] 
+New type java.util.Vector<domain.RegisteredUser>
+
+[2021-10-03 21:09:00 #9 type.registry] 
+New type java.util.Vector<java.lang.Double>
+
+[2021-10-03 21:09:00 #10 type] 
+Type domain.Apostua is not enhanced.
+
+[2021-10-03 21:09:00 #11 type.registry] 
+New type domain.Pronostico
+
+[2021-10-03 21:09:00 #12 type.registry] 
+New type java.util.ArrayList<domain.Pronostico>
+
+[2021-10-03 21:09:00 #13 type] 
+Type domain.Pronostico is not enhanced.
+
+[2021-10-03 21:09:00 #14 type.registry] 
+New type domain.Question
+
+[2021-10-03 21:09:00 #15 type] 
+Type domain.Question is not enhanced.
+
+[2021-10-03 21:09:00 #16 type.registry] 
+New type domain.Event
+
+[2021-10-03 21:09:00 #17 type] 
+Type domain.Event is not enhanced.
+
+[2021-10-03 21:09:00 #18 type.registry] 
+New type java.util.Vector<domain.Question>
+
+[2021-10-03 21:09:00 #19 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2021-10-03 21:09:00 #20 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-10-03 21:09:26 #1 store] 
+Database 'C:\Users\bsara\git\Bets21ProbaProiek\src\main\resources\bets.temp' is opened by 22384@LAPTOP-APEB7RIS
+
+[2021-10-03 21:09:26 #2 type.registry] 
+New type domain.User
+
+[2021-10-03 21:09:26 #3 type.registry] 
+New type domain.RegisteredUser
+
+[2021-10-03 21:09:26 #4 type] 
+Type domain.User is not enhanced.
+
+[2021-10-03 21:09:27 #5 type] 
+Type domain.RegisteredUser is not enhanced.
+
+[2021-10-03 21:09:27 #6 type.registry] 
+New type domain.Apostua
+
+[2021-10-03 21:09:27 #7 type.registry] 
+New type java.util.ArrayList<domain.Apostua>
+
+[2021-10-03 21:09:27 #8 type.registry] 
+New type java.util.Vector<domain.RegisteredUser>
+
+[2021-10-03 21:09:27 #9 type.registry] 
+New type java.util.Vector<java.lang.Double>
+
+[2021-10-03 21:09:27 #10 type] 
+Type domain.Apostua is not enhanced.
+
+[2021-10-03 21:09:27 #11 type.registry] 
+New type domain.Pronostico
+
+[2021-10-03 21:09:27 #12 type.registry] 
+New type java.util.ArrayList<domain.Pronostico>
+
+[2021-10-03 21:09:27 #13 type] 
+Type domain.Pronostico is not enhanced.
+
+[2021-10-03 21:09:27 #14 type.registry] 
+New type domain.Question
+
+[2021-10-03 21:09:27 #15 type] 
+Type domain.Question is not enhanced.
+
+[2021-10-03 21:09:27 #16 type.registry] 
+New type domain.Event
+
+[2021-10-03 21:09:27 #17 type] 
+Type domain.Event is not enhanced.
+
+[2021-10-03 21:09:27 #18 type.registry] 
+New type java.util.Vector<domain.Question>
+
+[2021-10-03 21:09:27 #19 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2021-10-03 21:09:27 #20 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-10-03 21:11:05 #1 store] 
+Database 'C:\Users\bsara\git\Bets21ProbaProiek\src\main\resources\bets.temp' is opened by 18240@LAPTOP-APEB7RIS
+
+[2021-10-03 21:11:05 #2 type.registry] 
+New type domain.User
+
+[2021-10-03 21:11:05 #3 type.registry] 
+New type domain.RegisteredUser
+
+[2021-10-03 21:11:05 #4 type] 
+Type domain.User is not enhanced.
+
+[2021-10-03 21:11:05 #5 type] 
+Type domain.RegisteredUser is not enhanced.
+
+[2021-10-03 21:11:05 #6 type.registry] 
+New type domain.Apostua
+
+[2021-10-03 21:11:06 #7 type.registry] 
+New type java.util.ArrayList<domain.Apostua>
+
+[2021-10-03 21:11:06 #8 type.registry] 
+New type java.util.Vector<domain.RegisteredUser>
+
+[2021-10-03 21:11:06 #9 type.registry] 
+New type java.util.Vector<java.lang.Double>
+
+[2021-10-03 21:11:06 #10 type] 
+Type domain.Apostua is not enhanced.
+
+[2021-10-03 21:11:06 #11 type.registry] 
+New type domain.Pronostico
+
+[2021-10-03 21:11:06 #12 type.registry] 
+New type java.util.ArrayList<domain.Pronostico>
+
+[2021-10-03 21:11:06 #13 type] 
+Type domain.Pronostico is not enhanced.
+
+[2021-10-03 21:11:06 #14 type.registry] 
+New type domain.Question
+
+[2021-10-03 21:11:06 #15 type] 
+Type domain.Question is not enhanced.
+
+[2021-10-03 21:11:06 #16 type.registry] 
+New type domain.Event
+
+[2021-10-03 21:11:06 #17 type] 
+Type domain.Event is not enhanced.
+
+[2021-10-03 21:11:06 #18 type.registry] 
+New type java.util.Vector<domain.Question>
+
+[2021-10-03 21:11:06 #19 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2021-10-03 21:11:06 #20 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-10-03 21:12:23 #1 store] 
+Database 'C:\Users\bsara\git\Bets21ProbaProiek\src\main\resources\bets.temp' is opened by 6484@LAPTOP-APEB7RIS
+
+[2021-10-03 21:12:23 #2 type.registry] 
+New type domain.User
+
+[2021-10-03 21:12:23 #3 type.registry] 
+New type domain.RegisteredUser
+
+[2021-10-03 21:12:23 #4 type] 
+Type domain.User is not enhanced.
+
+[2021-10-03 21:12:23 #5 type] 
+Type domain.RegisteredUser is not enhanced.
+
+[2021-10-03 21:12:23 #6 type.registry] 
+New type domain.Apostua
+
+[2021-10-03 21:12:23 #7 type.registry] 
+New type java.util.ArrayList<domain.Apostua>
+
+[2021-10-03 21:12:23 #8 type.registry] 
+New type java.util.Vector<domain.RegisteredUser>
+
+[2021-10-03 21:12:23 #9 type.registry] 
+New type java.util.Vector<java.lang.Double>
+
+[2021-10-03 21:12:23 #10 type] 
+Type domain.Apostua is not enhanced.
+
+[2021-10-03 21:12:23 #11 type.registry] 
+New type domain.Pronostico
+
+[2021-10-03 21:12:23 #12 type.registry] 
+New type java.util.ArrayList<domain.Pronostico>
+
+[2021-10-03 21:12:23 #13 type] 
+Type domain.Pronostico is not enhanced.
+
+[2021-10-03 21:12:23 #14 type.registry] 
+New type domain.Question
+
+[2021-10-03 21:12:23 #15 type] 
+Type domain.Question is not enhanced.
+
+[2021-10-03 21:12:23 #16 type.registry] 
+New type domain.Event
+
+[2021-10-03 21:12:23 #17 type] 
+Type domain.Event is not enhanced.
+
+[2021-10-03 21:12:23 #18 type.registry] 
+New type java.util.Vector<domain.Question>
+
+[2021-10-03 21:12:23 #19 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2021-10-03 21:12:23 #20 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-10-03 21:13:12 #1 store] 
+Database 'C:\Users\bsara\git\Bets21ProbaProiek\src\main\resources\bets.temp' is opened by 3984@LAPTOP-APEB7RIS
+
+[2021-10-03 21:13:12 #2 type.registry] 
+New type domain.User
+
+[2021-10-03 21:13:12 #3 type.registry] 
+New type domain.RegisteredUser
+
+[2021-10-03 21:13:12 #4 type] 
+Type domain.User is not enhanced.
+
+[2021-10-03 21:13:12 #5 type] 
+Type domain.RegisteredUser is not enhanced.
+
+[2021-10-03 21:13:12 #6 type.registry] 
+New type domain.Apostua
+
+[2021-10-03 21:13:12 #7 type.registry] 
+New type java.util.ArrayList<domain.Apostua>
+
+[2021-10-03 21:13:12 #8 type.registry] 
+New type java.util.Vector<domain.RegisteredUser>
+
+[2021-10-03 21:13:12 #9 type.registry] 
+New type java.util.Vector<java.lang.Double>
+
+[2021-10-03 21:13:12 #10 type] 
+Type domain.Apostua is not enhanced.
+
+[2021-10-03 21:13:12 #11 type.registry] 
+New type domain.Pronostico
+
+[2021-10-03 21:13:12 #12 type.registry] 
+New type java.util.ArrayList<domain.Pronostico>
+
+[2021-10-03 21:13:12 #13 type] 
+Type domain.Pronostico is not enhanced.
+
+[2021-10-03 21:13:12 #14 type.registry] 
+New type domain.Question
+
+[2021-10-03 21:13:12 #15 type] 
+Type domain.Question is not enhanced.
+
+[2021-10-03 21:13:12 #16 type.registry] 
+New type domain.Event
+
+[2021-10-03 21:13:12 #17 type] 
+Type domain.Event is not enhanced.
+
+[2021-10-03 21:13:12 #18 type.registry] 
+New type java.util.Vector<domain.Question>
+
+[2021-10-03 21:13:12 #19 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2021-10-03 21:13:12 #20 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-10-03 21:14:36 #1 store] 
+Database 'C:\Users\bsara\git\Bets21ProbaProiek\src\main\resources\bets.temp' is opened by 616@LAPTOP-APEB7RIS
+
+[2021-10-03 21:14:36 #2 type.registry] 
+New type domain.User
+
+[2021-10-03 21:14:36 #3 type.registry] 
+New type domain.RegisteredUser
+
+[2021-10-03 21:14:36 #4 type] 
+Type domain.User is not enhanced.
+
+[2021-10-03 21:14:36 #5 type] 
+Type domain.RegisteredUser is not enhanced.
+
+[2021-10-03 21:14:36 #6 type.registry] 
+New type domain.Apostua
+
+[2021-10-03 21:14:36 #7 type.registry] 
+New type java.util.ArrayList<domain.Apostua>
+
+[2021-10-03 21:14:36 #8 type.registry] 
+New type java.util.Vector<domain.RegisteredUser>
+
+[2021-10-03 21:14:36 #9 type.registry] 
+New type java.util.Vector<java.lang.Double>
+
+[2021-10-03 21:14:36 #10 type] 
+Type domain.Apostua is not enhanced.
+
+[2021-10-03 21:14:36 #11 type.registry] 
+New type domain.Pronostico
+
+[2021-10-03 21:14:36 #12 type.registry] 
+New type java.util.ArrayList<domain.Pronostico>
+
+[2021-10-03 21:14:36 #13 type] 
+Type domain.Pronostico is not enhanced.
+
+[2021-10-03 21:14:36 #14 type.registry] 
+New type domain.Question
+
+[2021-10-03 21:14:36 #15 type] 
+Type domain.Question is not enhanced.
+
+[2021-10-03 21:14:36 #16 type.registry] 
+New type domain.Event
+
+[2021-10-03 21:14:36 #17 type] 
+Type domain.Event is not enhanced.
+
+[2021-10-03 21:14:36 #18 type.registry] 
+New type java.util.Vector<domain.Question>
+
+[2021-10-03 21:14:36 #19 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2021-10-03 21:14:36 #20 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2021-10-03 21:45:38 #1 store] 
+Database 'C:\Users\bsara\git\Bets21ProbaProiek\src\main\resources\bets.temp' is opened by 12380@LAPTOP-APEB7RIS
+
+[2021-10-03 21:45:39 #2 type.registry] 
+New type domain.User
+
+[2021-10-03 21:45:39 #3 type.registry] 
+New type domain.RegisteredUser
+
+[2021-10-03 21:45:39 #4 type] 
+Type domain.User is not enhanced.
+
+[2021-10-03 21:45:39 #5 type] 
+Type domain.RegisteredUser is not enhanced.
+
+[2021-10-03 21:45:39 #6 type.registry] 
+New type domain.Apostua
+
+[2021-10-03 21:45:39 #7 type.registry] 
+New type java.util.ArrayList<domain.Apostua>
+
+[2021-10-03 21:45:39 #8 type.registry] 
+New type java.util.Vector<domain.RegisteredUser>
+
+[2021-10-03 21:45:39 #9 type.registry] 
+New type java.util.Vector<java.lang.Double>
+
+[2021-10-03 21:45:39 #10 type] 
+Type domain.Apostua is not enhanced.
+
+[2021-10-03 21:45:39 #11 type.registry] 
+New type domain.Pronostico
+
+[2021-10-03 21:45:39 #12 type.registry] 
+New type java.util.ArrayList<domain.Pronostico>
+
+[2021-10-03 21:45:39 #13 type] 
+Type domain.Pronostico is not enhanced.
+
+[2021-10-03 21:45:39 #14 type.registry] 
+New type domain.Question
+
+[2021-10-03 21:45:39 #15 type] 
+Type domain.Question is not enhanced.
+
+[2021-10-03 21:45:39 #16 type.registry] 
+New type domain.Event
+
+[2021-10-03 21:45:39 #17 type] 
+Type domain.Event is not enhanced.
+
+[2021-10-03 21:45:39 #18 type.registry] 
+New type java.util.Vector<domain.Question>
+
+[2021-10-03 21:45:39 #19 type.registry] 
+New type java.util.Vector<java.lang.Object>
+
+[2021-10-03 21:45:39 #20 type.registry] 
+New type java.util.ArrayList<java.lang.Object>
+
