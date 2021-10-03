@@ -11,12 +11,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import configuration.ConfigXML;
+import configuration.UtilDate;
 import dataAccess.DataAccess;
 import domain.Event;
 import domain.Pronostico;
 import domain.Question;
 import domain.RegisteredUser;
 import domain.User;
+import domain.Worker;
 import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
 import exceptions.UserAlreadyExist;
@@ -44,9 +46,68 @@ public class RegisterDAB {
 			int eguna = 11;
 			long bankuZenbakia = 1234567899;
 			int tipo = 2;
+			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
+			//invoke System Under Test (sut) 
+				try {
+					sut.open(true);
+					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.close();
+					assertTrue(true);
+					
+				}
+				catch(Exception e) {
+					fail();
+				}
+				finally {
+					testDA.removeUser(user);
+				}
+
+		   }
+	@Test
+	//sut.irabazi:  The user is a worker. 
+	public void test2() {
 			
-			//set up test data base
+			//define parameters
+			String izena = "Nikolas";
+			String id = "12345678L";
+			String email = "ni@ni.com";
+			String pasahitza = "123";
+			int urtea = 1994;
+			int hilabetea = 8;
+			int eguna = 11;
+			long bankuZenbakia = 1234567899;
+			int tipo = 1;
+			Worker user = new Worker(izena, pasahitza, email, id);
+			//invoke System Under Test (sut) 
+				try {
+					sut.open(true);
+					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);;
+					sut.close();
+					assertTrue(true);
+					
+				}
+				catch(Exception e) {
+					fail();
+				}
+				finally {
+					testDA.removeUser(user);
+				}
+
+		   }
+	@Test
+	//sut.irabazi:  The user is an admin. 
+	public void test3() {
 			
+			//define parameters
+			String izena = "Nikolas";
+			String id = "12345678L";
+			String email = "ni@ni.com";
+			String pasahitza = "123";
+			int urtea = 1994;
+			int hilabetea = 8;
+			int eguna = 11;
+			long bankuZenbakia = 1234567899;
+			int tipo = 0;
 			//invoke System Under Test (sut) 
 				try {
 					sut.open(true);
@@ -60,127 +121,372 @@ public class RegisterDAB {
 				}
 
 		   }
+
 	@Test
-	//sut.createQuestion:  The forecast is null. 
-		public void test2() {
-		
-		//define parameters	
-		String forename="forecast1";
-		double percentage=0.5;
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Date date=null;;
-		try {
-			date = sdf.parse("05/10/2022");
-		} 
-		catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-					
-		Question question = new Question(1, "galderaTextu", 500, new Event(1, "Deskribapena",date));
-		Pronostico iraPro = null;
-		
-		//set up test data base
-			testDA.open();
-			testDA.addQuestion(question);
-			testDA.close();
-		//invoke System Under Test (sut) 
-			try {
-				sut.open(true);
-				sut.irabazi(iraPro);
-				sut.close();
-				fail();
-			}
-			catch(Exception e) {
-				assertTrue(true);
-			}
-			finally {
-				testDA.open();
-				testDA.removeQuestion(question);
-				testDA.close();
-			}
-		
-	   }
-	
-	@Test
-	//sut.createQuestion:  The question is not in the data base. 
-	public void test3() {
-		
-		//define parameters
-		String forename="forecast1";
-		double percentage=0.5;
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Date date=null;
-		try {
-			date = sdf.parse("05/10/2022");
-		} 
-		catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-		Question question = new Question(1, "galderaTextu", 500, new Event(1, "Deskribapena",date));
-		//set up test data base
-		testDA.open();
-		Pronostico iraPro = testDA.addPronostico(forename, percentage, question);
-		testDA.close();
-		//invoke System Under Test (sut) 
-		try {
-			sut.open(true);
-			sut.irabazi(iraPro);
-			sut.close();
-			fail();
-		}
-		catch(Exception e) {
-			assertTrue(true);
-		}
-		finally {
-			testDA.open();
-			testDA.removeForecast(iraPro);
-			testDA.close();
-		}
-		
-	}
-	
-	@Test
-	//sut.createQuestion:  Everything is correct. 
+	//sut.irabazi:  The user already exists
 	public void test4() {
-		
-		//define parameters
-		String forename="forecast1";
-		double percentage=0.5;
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Date date=null;
-		try {
-			date = sdf.parse("05/10/2022");
-		} 
-		catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-		Question question = new Question(1, "galderaTextu", 500, new Event(1, "Deskribapena",date));
-		//set up test data base
-			testDA.open();
-			testDA.addQuestion(question);
-			Pronostico iraPro = testDA.addPronostico(forename, percentage, question);			
-			testDA.close();
-			//invoke System Under Test (sut) 
+			
+			//define parameters
+			String izena = "Nikolas";
+			String id = "12345678L";
+			String email = "ni@ni.com";
+			String pasahitza = "123";
+			int urtea = 1994;
+			int hilabetea = 8;
+			int eguna = 11;
+			long bankuZenbakia = 1234567899;
+			int tipo = 2;
+			RegisteredUser user;
+			//set up test data base
 			try {
-				sut.open(true);
-				sut.irabazi(iraPro);
-				sut.close();
-				assertTrue(true);
+				user = testDA.addUser(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+			
+			//invoke System Under Test (sut) 
+				try {
+					sut.open(true);
+					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);;
+					sut.close();
+					fail();
+					
 				}
-			catch(Exception e) {
-				e.printStackTrace();
-				fail();
+				catch(UserAlreadyExist e) {
+					assertTrue(true);
 				}
 				finally {
-					testDA.open();
-					testDA.removeForecast(iraPro);
-					testDA.removeQuestion(question);
-					testDA.close();
+					testDA.removeUser(user);
 				}
+			} catch (UserAlreadyExist e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				fail();
+			}
 
-		
+		   }
+	
+	@Test
+	//sut.irabazi:  The name is null
+	public void test5() {
+			
+			//define parameters
+			String izena = null;
+			String id = "12345678L";
+			String email = "ni@ni.com";
+			String pasahitza = "123";
+			int urtea = 1994;
+			int hilabetea = 8;
+			int eguna = 11;
+			long bankuZenbakia = 1234567899;
+			int tipo = 2;
+			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
+			
+			//invoke System Under Test (sut) 
+				try {
+					sut.open(true);
+					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.close();
+					fail();
+					
+				}
+				catch(UserAlreadyExist e) {
+					assertTrue(true);
+				}
+				catch(IllegalArgumentException e) {
+					e.printStackTrace();
+					assertTrue(true);
+				}
 	}
+	
+	@Test
+	//sut.irabazi:  The id is null
+	public void test6() {
+			
+			//define parameters
+			String izena = "Nikolas";
+			String id = null;
+			String email = "ni@ni.com";
+			String pasahitza = "123";
+			int urtea = 1994;
+			int hilabetea = 8;
+			int eguna = 11;
+			long bankuZenbakia = 1234567899;
+			int tipo = 2;
+			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
+			
+			//invoke System Under Test (sut) 
+				try {
+					sut.open(true);
+					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.close();
+					fail();
+					
+				}
+				catch(UserAlreadyExist e) {
+					assertTrue(true);
+				}
+				catch(IllegalArgumentException e) {
+					e.printStackTrace();
+					assertTrue(true);
+				}
+	}
+	
+	@Test
+	//sut.irabazi:  The email is null
+	public void test7() {
+			
+			//define parameters
+			String izena = "Nikolas";
+			String id = "12345678L";
+			String email = null;
+			String pasahitza = "123";
+			int urtea = 1994;
+			int hilabetea = 8;
+			int eguna = 11;
+			long bankuZenbakia = 1234567899;
+			int tipo = 2;
+			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
+			
+			//invoke System Under Test (sut) 
+				try {
+					sut.open(true);
+					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.close();
+					fail();
+					
+				}
+				catch(UserAlreadyExist e) {
+					assertTrue(true);
+				}
+				catch(IllegalArgumentException e) {
+					e.printStackTrace();
+					assertTrue(true);
+				}
+	}
+	
+	@Test
+	//sut.irabazi:  The password is null
+	public void test8() {
+			
+			//define parameters
+			String izena = "Nikolas";
+			String id = "12345678L";
+			String email = "ni@ni.com";
+			String pasahitza = null;
+			int urtea = 1994;
+			int hilabetea = 8;
+			int eguna = 11;
+			long bankuZenbakia = 1234567899;
+			int tipo = 2;
+			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
+			
+			//invoke System Under Test (sut) 
+				try {
+					sut.open(true);
+					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.close();
+					fail();
+					
+				}
+				catch(UserAlreadyExist e) {
+					assertTrue(true);
+				}
+				catch(IllegalArgumentException e) {
+					e.printStackTrace();
+					assertTrue(true);
+				}
+	}
+	
+	@Test
+	//sut.irabazi:  The year is null
+	public void test9() {
+			try {
+				
+			//define parameters
+			String izena = "Nikolas";
+			String id = "12345678L";
+			String email = "ni@ni.com";
+			String pasahitza = "123";
+			int urtea = (Integer) null;
+			int hilabetea = 8;
+			int eguna = 11;
+			long bankuZenbakia = 1234567899;
+			int tipo = 2;
+			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
+			
+			//invoke System Under Test (sut) 
+				try {
+					sut.open(true);
+					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.close();
+					fail();
+					
+				}
+				catch(UserAlreadyExist e) {
+					assertTrue(true);
+				}
+				catch(IllegalArgumentException e) {
+					e.printStackTrace();
+					assertTrue(true);
+				}
+			}
+			catch(NullPointerException e) {
+				fail();
+			}
+	}
+	
+	@Test
+	//sut.irabazi:  The month is null
+	public void test10() {
+		try {
+			
+		//define parameters
+		String izena = "Nikolas";
+		String id = "12345678L";
+		String email = "ni@ni.com";
+		String pasahitza = "123";
+		int urtea = 1994;
+		int hilabetea = (Integer) null;
+		int eguna = 11;
+		long bankuZenbakia = 1234567899;
+		int tipo = 2;
+		RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
+		
+		//invoke System Under Test (sut) 
+			try {
+				sut.open(true);
+				sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+				sut.close();
+				fail();
+				
+			}
+			catch(UserAlreadyExist e) {
+				assertTrue(true);
+			}
+			catch(IllegalArgumentException e) {
+				e.printStackTrace();
+				assertTrue(true);
+			}
+		}
+		catch(NullPointerException e) {
+			fail();
+		}
+}
+	
+	@Test
+	//sut.irabazi:  The day is null
+	public void test11() {
+		try {
+			
+		//define parameters
+		String izena = "Nikolas";
+		String id = "12345678L";
+		String email = "ni@ni.com";
+		String pasahitza = "123";
+		int urtea = 1994;
+		int hilabetea = 8;
+		int eguna = (Integer) null;
+		long bankuZenbakia = 1234567899;
+		int tipo = 2;
+		RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
+		
+		//invoke System Under Test (sut) 
+			try {
+				sut.open(true);
+				sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+				sut.close();
+				fail();
+				
+			}
+			catch(UserAlreadyExist e) {
+				assertTrue(true);
+			}
+			catch(IllegalArgumentException e) {
+				e.printStackTrace();
+				assertTrue(true);
+			}
+		}
+		catch(NullPointerException e) {
+			fail();
+		}
+}
+	
+	@Test
+	//sut.irabazi:  The bankNumber is null
+	public void test12() {
+		try {
+			
+		//define parameters
+		String izena = "Nikolas";
+		String id = "12345678L";
+		String email = "ni@ni.com";
+		String pasahitza = "123";
+		int urtea = 1994;
+		int hilabetea = 8;
+		int eguna = 11;
+		long bankuZenbakia = (Long) null;
+		int tipo = 2;
+		RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
+		
+		//invoke System Under Test (sut) 
+			try {
+				sut.open(true);
+				sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+				sut.close();
+				fail();
+				
+			}
+			catch(UserAlreadyExist e) {
+				assertTrue(true);
+			}
+			catch(IllegalArgumentException e) {
+				e.printStackTrace();
+				assertTrue(true);
+			}
+		}
+		catch(NullPointerException e) {
+			fail();
+		}
+}
+	
+	@Test
+	//sut.irabazi:  The type is null
+	public void test13() {
+		try {
+			
+		//define parameters
+		String izena = "Nikolas";
+		String id = "12345678L";
+		String email = "ni@ni.com";
+		String pasahitza = "123";
+		int urtea = 1994;
+		int hilabetea = 8;
+		int eguna = 11;
+		long bankuZenbakia = 1234567899;
+		int tipo = (Integer) null;
+		RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
+		
+		//invoke System Under Test (sut) 
+			try {
+				sut.open(true);
+				sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+				sut.close();
+				fail();
+				
+			}
+			catch(UserAlreadyExist e) {
+				assertTrue(true);
+			}
+			catch(IllegalArgumentException e) {
+				e.printStackTrace();
+				assertTrue(true);
+			}
+		}
+		catch(NullPointerException e) {
+			fail();
+		}
+}
+	
+	
+	
+	
+		
 }

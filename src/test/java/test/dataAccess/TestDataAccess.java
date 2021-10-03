@@ -17,6 +17,7 @@ import domain.Event;
 import domain.Pronostico;
 import domain.Question;
 import domain.RegisteredUser;
+import domain.User;
 import domain.Worker;
 import exceptions.IncorrectBetException;
 import exceptions.JarraitzenZenuenException;
@@ -126,9 +127,9 @@ public class TestDataAccess {
 			return p;
 		}
 		
-		public boolean removeUser(RegisteredUser user) {
+		public boolean removeUser(User user) {
 			System.out.println(">> DataAccessTest: removeUser");
-			RegisteredUser u = db.find(RegisteredUser.class, user.getUsername());
+			User u = db.find(User.class, user.getUsername());
 			if (u!=null) {
 				db.getTransaction().begin();
 				db.remove(u);
