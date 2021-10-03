@@ -46,7 +46,7 @@ public class ApostuaEginDAW {
 			Float betMinimum=new Float(5);
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;;
+			Date oneDate=null;
 			try {
 				oneDate = sdf.parse("05/10/2022");
 			} catch (ParseException e) {
@@ -64,11 +64,13 @@ public class ApostuaEginDAW {
 			pro.add(p);
 			testDA.close();			
 			
-			//invoke System Under Test (sut)  
+			//invoke System Under Test (sut) 
+			sut.open(true);
 			u = sut.ApostuaEgin(10.0, user, pro);
+			sut.close();
 			
 			//verify the results
-			assertTrue(u!=null);
+			assertTrue(true);
 			
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -94,7 +96,7 @@ public class ApostuaEginDAW {
 			Float betMinimum=new Float(5);
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;;
+			Date oneDate=null;
 			try {
 				oneDate = sdf.parse("05/10/2022");
 			} catch (ParseException e) {
@@ -114,15 +116,18 @@ public class ApostuaEginDAW {
 			
 			System.out.println(user.getUsername()+" "+ev.getEventNumber()+" "+q.getQuestion()+" "+p.getErantzuna());
 			//invoke System Under Test (sut)  
+			sut.open(true);
 			u = sut.ApostuaEgin(3.0, user, pro);
-
+			sut.close();
+			fail();
+			
 			//verify the results
-			assertTrue(u!=null);
+			
 			
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail 
-			fail();
+			   assertTrue(true);
 			} finally {
 				  //Remove the created objects in the database (cascade removing)  
 				System.out.println("froga"+user.getUsername()+" "+ev.getEventNumber());
@@ -145,7 +150,7 @@ public class ApostuaEginDAW {
 			Float betMinimum=new Float(2);
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;;
+			Date oneDate=null;
 			try {
 				oneDate = sdf.parse("05/10/2022");
 			} catch (ParseException e) {
@@ -157,7 +162,8 @@ public class ApostuaEginDAW {
 			testDA.open();
 			user = testDA.addUser("Beñat", "bsarasua", "bsarasua@ehu.eus", "pass", 2001, 10, 21, 123, 2);
 			user2 = testDA.addUser("Eki", "ekimendibil", "eki@ehu.eus", "pass", 2001, 10, 21, 123, 2);
-			user3 = testDA.jarraitu(user2, user, 50.0);
+			user.encenderseguir(2);
+			user2.seguir(user, 0.4);
 			ev = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
 			q = ev.getQuestions().get(0);
 			Vector<Pronostico> pro = new Vector<Pronostico>();
@@ -165,15 +171,18 @@ public class ApostuaEginDAW {
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  
-			u = sut.ApostuaEgin(5.3, user3, pro);
+			sut.open(true);
+			u = sut.ApostuaEgin(5.3, user, pro);
+			sut.close();
+			fail();
 			
 			//verify the results
-			assertTrue(u!=null);
+			
 			
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail 
-			fail();
+			   assertTrue(true);
 			} finally {
 				  //Remove the created objects in the database (cascade removing)  
 				testDA.open();

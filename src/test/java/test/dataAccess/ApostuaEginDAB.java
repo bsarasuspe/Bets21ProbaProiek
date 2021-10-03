@@ -46,7 +46,7 @@ public class ApostuaEginDAB {
 			Float betMinimum=new Float(5);
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;;
+			Date oneDate=null;
 			try {
 				oneDate = sdf.parse("05/10/2022");
 			} catch (ParseException e) {
@@ -64,8 +64,10 @@ public class ApostuaEginDAB {
 			pro.add(p);
 			testDA.close();			
 			
-			//invoke System Under Test (sut)  
+			//invoke System Under Test (sut) 
+			sut.open(true);
 			u = sut.ApostuaEgin(10.0, user, pro);
+			sut.close();
 			
 			//verify the results
 			assertTrue(u!=null);
@@ -100,7 +102,7 @@ public class ApostuaEginDAB {
 			}
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;;
+			Date oneDate=null;
 			try {
 				oneDate = sdf.parse("05/10/2022");
 			} catch (ParseException e) {
@@ -119,15 +121,18 @@ public class ApostuaEginDAB {
 			testDA.close();		
 			
 			//invoke System Under Test (sut)  
+			sut.open(true);
 			u = sut.ApostuaEgin(3.0, user, pro);
-
+			sut.close();
+			fail();
+			
 			//verify the results
-			assertTrue(u!=null);
+			
 			
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail 
-			fail();
+			   assertTrue(true);
 			} finally {
 				  //Remove the created objects in the database (cascade removing)  
 				System.out.println("froga"+user.getUsername()+" "+ev.getEventNumber());
@@ -149,7 +154,7 @@ public class ApostuaEginDAB {
 			Float betMinimum=new Float(2);
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;;
+			Date oneDate=null;
 			try {
 				oneDate = sdf.parse("05/10/2022");
 			} catch (ParseException e) {
@@ -168,15 +173,19 @@ public class ApostuaEginDAB {
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  
+			sut.open(true);
 			u = sut.ApostuaEgin(6.0, null, pro);
+			sut.close();
+			fail();
 			
 			//verify the results
-			assertTrue(u!=null);
+			
 			
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
-			// if the program goes to this point fail 
-			fail();
+			// if the program goes to this point fail
+			 assertTrue(true);
+			
 			} finally {
 				  //Remove the created objects in the database (cascade removing)  
 				testDA.open();
@@ -197,7 +206,7 @@ public class ApostuaEginDAB {
 			Float betMinimum=new Float(2);
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;;
+			Date oneDate=null;
 			try {
 				oneDate = sdf.parse("05/10/2022");
 			} catch (ParseException e) {
@@ -216,15 +225,18 @@ public class ApostuaEginDAB {
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  
+			sut.open(true);
 			u = sut.ApostuaEgin(6.0, user, null);
+			sut.close();
+			fail();
 			
 			//verify the results
-			assertTrue(u!=null);
 			
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail 
-			fail();
+			assertTrue(true);
+			
 			} finally {
 				  //Remove the created objects in the database (cascade removing)  
 				testDA.open();
@@ -245,7 +257,7 @@ public class ApostuaEginDAB {
 			Float betMinimum=new Float(2);
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;;
+			Date oneDate=null;
 			try {
 				oneDate = sdf.parse("05/10/2022");
 			} catch (ParseException e) {
@@ -263,15 +275,18 @@ public class ApostuaEginDAB {
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  
+			sut.open(true);
 			u = sut.ApostuaEgin(5.3, user, pro);
+			sut.close();
+			fail();
 			
 			//verify the results
-			assertTrue(u!=null);
+			
 			
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail 
-			fail();
+			   assertTrue(true);
 			} finally {
 				  //Remove the created objects in the database (cascade removing)  
 				testDA.open();
@@ -292,7 +307,7 @@ public class ApostuaEginDAB {
 			Float betMinimum=new Float(2);
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;;
+			Date oneDate=null;
 			try {
 				oneDate = sdf.parse("05/10/2022");
 			} catch (ParseException e) {
@@ -310,15 +325,18 @@ public class ApostuaEginDAB {
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  
+			sut.open(true);
 			u = sut.ApostuaEgin(5.3, user, pro);
+			sut.close();
+			fail();
 			
 			//verify the results
-			assertTrue(u!=null);
+			
 			
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail 
-			fail();
+			   assertTrue(true);
 			} finally {
 				  //Remove the created objects in the database (cascade removing)  
 				testDA.open();
