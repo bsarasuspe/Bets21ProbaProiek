@@ -31,7 +31,7 @@ public class IrabaziDAW {
 	 static TestDataAccess testDA=new TestDataAccess();
 	
 
-	@Test
+	@Test 
 	public void test1() {
 		
 		//define parameters
