@@ -1,4 +1,4 @@
-package test.dataAccess;
+package test.businessLogic;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -9,7 +9,11 @@ import java.util.Date;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mockito;
 
+import businessLogic.BLFacade;
+import businessLogic.BLFacadeImplementation;
 import configuration.ConfigXML;
 import dataAccess.DataAccess;
 import domain.Event;
@@ -21,13 +25,15 @@ import exceptions.QuestionAlreadyExist;
 import exceptions.UserAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
 
-public class IrabaziDAB {
+public class IrabaziMockInt {
 
-	 //sut:system under test
-	 static DataAccess sut=new DataAccess(true);
-	 
-	 //additional operations needed to execute the test 
-	 static TestDataAccess testDA=new TestDataAccess();
+	 DataAccess dataAccess=Mockito.mock(DataAccess.class);
+     Question mockedQuestion=Mockito.mock(Question.class);
+     Pronostico mockedForecast=Mockito.mock(Pronostico.class);
+     
+	
+	@InjectMocks
+	 BLFacade sut=new BLFacadeImplementation(dataAccess);
 	
 	@Test
 	//sut.irabazi:  The winning forecast is not in the data base. 
@@ -49,28 +55,20 @@ public class IrabaziDAB {
 			Question question = new Question(1, "galderaTextu", 500, new Event(1, "Deskribapena",date));
 			Pronostico iraPro = new Pronostico(forename,percentage,question);
 			
-			//set up test data base
-				testDA.open();				
-				testDA.addQuestion(question);
-				testDA.close();
+			//configure mock
+			Mockito.doThrow(new RuntimeException()).when(dataAccess).irabazi(Mockito.any(Pronostico.class));
+
 			
 			//invoke System Under Test (sut) 
 				try {
-					sut.open(true);
 					sut.irabazi(iraPro);
-					sut.close();
 					fail();
 				}
 				catch(Exception e) {
 					assertTrue(true);
 				}
-				finally {
-					testDA.open();
-					testDA.removeQuestion(question);
-					testDA.close();
-				}
-
-		   }
+			}
+		   
 	@Test
 	//sut.createQuestion:  The forecast is null. 
 		public void test2() {
@@ -91,26 +89,18 @@ public class IrabaziDAB {
 		Question question = new Question(1, "galderaTextu", 500, new Event(1, "Deskribapena",date));
 		Pronostico iraPro = null;
 		
-		//set up test data base
-			testDA.open();
-			testDA.addQuestion(question);
-			testDA.close();
+		//configure mock
+		Mockito.doThrow(new RuntimeException()).when(dataAccess).irabazi(Mockito.any(Pronostico.class));
+
 		//invoke System Under Test (sut) 
 			try {
-				sut.open(true);
 				sut.irabazi(iraPro);
-				sut.close();
 				fail();
 			}
 			catch(Exception e) {
 				assertTrue(true);
 			}
-			finally {
-				testDA.open();
-				testDA.removeQuestion(question);
-				testDA.close();
-			}
-		
+
 	   }
 	
 	@Test
@@ -129,25 +119,19 @@ public class IrabaziDAB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
+		
 		Question question = new Question(1, "galderaTextu", 500, new Event(1, "Deskribapena",date));
-		//set up test data base
-		testDA.open();
-		Pronostico iraPro = testDA.addPronostico(forename, percentage, question);
-		testDA.close();
+		Pronostico iraPro = new Pronostico(forename,percentage,question);
+		//configure mock
+		Mockito.doThrow(new RuntimeException()).when(dataAccess).irabazi(Mockito.any(Pronostico.class));
 		//invoke System Under Test (sut) 
 		try {
-			sut.open(true);
+
 			sut.irabazi(iraPro);
-			sut.close();
 			fail();
 		}
 		catch(Exception e) {
 			assertTrue(true);
-		}
-		finally {
-			testDA.open();
-			testDA.removeForecast(iraPro);
-			testDA.close();
 		}
 		
 	}
@@ -169,28 +153,19 @@ public class IrabaziDAB {
 			e.printStackTrace();
 		}	
 		Question question = new Question(1, "galderaTextu", 500, new Event(1, "Deskribapena",date));
-		//set up test data base
-			testDA.open();
-			testDA.addQuestion(question);
-			Pronostico iraPro = testDA.addPronostico(forename, percentage, question);			
-			testDA.close();
-			//invoke System Under Test (sut) 
-			try {
-				sut.open(true);
-				sut.irabazi(iraPro);
-				sut.close();
-				assertTrue(true);
-				}
-			catch(Exception e) {
-				e.printStackTrace();
-				fail();
-				}
-				finally {
-					testDA.open();
-					testDA.removeForecast(iraPro);
-					testDA.removeQuestion(question);
-					testDA.close();
-				}
+		Pronostico iraPro = new Pronostico(forename,percentage,question);
+		//configure mock
+		
+
+		//invoke System Under Test (sut) 
+		try {
+			sut.irabazi(iraPro);
+			assertTrue(true);
+			}
+		catch(Exception e) {
+			e.printStackTrace();
+			fail();
+			}
 
 		
 	}
