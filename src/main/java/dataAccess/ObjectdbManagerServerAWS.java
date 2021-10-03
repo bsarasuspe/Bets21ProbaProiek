@@ -36,7 +36,13 @@ public class ObjectdbManagerServerAWS {
 		    	Thread.sleep(1000);
 		    	}
 			
-		} catch (Exception e) {
+		}
+		catch (InterruptedException e) {
+			    e.printStackTrace();
+			    // Restore interrupted state...
+			    Thread.currentThread().interrupt();
+			  }
+		catch (Exception e) {
 			System.out.println("Something has happened in ObjectdbManagerServer: "+e.toString());
 
 		}
