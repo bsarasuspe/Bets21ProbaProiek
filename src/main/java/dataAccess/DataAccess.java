@@ -371,8 +371,8 @@ public boolean existQuestion(Event event, String question) {
 	}
 
 	public RegisteredUser ApostuaEgin(double DiruKantitaea,RegisteredUser usuario, Vector<Pronostico>  pronostico) throws IncorrectBetException{
-		db.getTransaction().begin();
-		Vector<Pronostico> pronosticolocal=new Vector<Pronostico>();
+		RegisteredUser user = this.ApostuaEginDos(DiruKantitaea, usuario, pronostico, null);
+		/*db.getTransaction().begin();	
 		Pronostico tmp;
 		for (Pronostico i:pronostico) {
 			tmp=db.find(Pronostico.class, i);
@@ -390,10 +390,10 @@ public boolean existQuestion(Event event, String question) {
 		for (Pronostico i:pronosticolocal) {
 			db.persist(i);
 		}
-		db.getTransaction().commit();
+		db.getTransaction().commit();*/
 		for (RegisteredUser i:user.getJarraitzendidate()) {
 			try {
-				ApostuaEginDos(DiruKantitaea*i.getPortzentaia(user), i, pronosticolocal,user);
+				ApostuaEginDos(DiruKantitaea*i.getPortzentaia(user), i, pronostico,user);
 			}catch (IncorrectBetException e) {
 			}
 		}
@@ -412,9 +412,13 @@ public boolean existQuestion(Event event, String question) {
 			}
 			pronosticolocal.add(tmp);
 		}
-
+		Apostua apusta;
 		RegisteredUser user = db.find(RegisteredUser.class, usuario.getUsername());
-		Apostua apusta=new Apostua(DiruKantitaea, user, pronosticolocal,mandon);
+		if (mandon!=null) {
+			apusta=new Apostua(DiruKantitaea, user, pronosticolocal,mandon);
+		}else {
+			apusta=new Apostua(DiruKantitaea, user, pronosticolocal);
+		}
 		user.setBalance(usuario.getBalance()-DiruKantitaea);
 		db.persist(user);
 		db.persist(apusta);
