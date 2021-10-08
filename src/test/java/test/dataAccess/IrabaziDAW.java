@@ -28,7 +28,7 @@ public class IrabaziDAW {
 	 static DataAccess sut=new DataAccess(true);
 	 
 	 //additional operations needed to execute the test 
-	 static TestDataAccess testDA=new TestDataAccess();
+	 static TestDataAccessTest testDA=new TestDataAccessTest();
 	
 
 	@Test 

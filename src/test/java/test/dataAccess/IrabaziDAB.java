@@ -27,7 +27,7 @@ public class IrabaziDAB {
 	 static DataAccess sut=new DataAccess(true);
 	 
 	 //additional operations needed to execute the test 
-	 static TestDataAccess testDA=new TestDataAccess();
+	 static TestDataAccessTest testDA=new TestDataAccessTest();
 	
 	@Test
 	//sut.irabazi:  The winning forecast is not in the data base. 

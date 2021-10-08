@@ -24,16 +24,16 @@ import exceptions.JarraitzenZenuenException;
 import exceptions.MutualFollowingException;
 import exceptions.UserAlreadyExist;
 
-public class TestDataAccess {
+public class TestDataAccessTest {
 	protected  EntityManager  db;
 	protected  EntityManagerFactory emf;
 
 	ConfigXML  c=ConfigXML.getInstance();
 
 
-	public TestDataAccess()  {
+	public TestDataAccessTest()  {
 		
-		System.out.println("Creating TestDataAccess instance");
+		System.out.println("Creating TestDataAccessTest instance");
 
 		open();
 		
@@ -42,7 +42,7 @@ public class TestDataAccess {
 	
 	public void open(){
 		
-		System.out.println("Opening TestDataAccess instance ");
+		System.out.println("Opening TestDataAccessTest instance ");
 
 		String fileName=c.getDbFilename();
 		

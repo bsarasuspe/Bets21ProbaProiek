@@ -28,7 +28,7 @@ public class ApostuaEginDAB {
 	 static DataAccess sut=new DataAccess(true);
 	 
 	 //additional operations needed to execute the test 
-	 static TestDataAccess testDA=new TestDataAccess();
+	 static TestDataAccessTest testDA=new TestDataAccessTest();
 
 	private Apostua ap;
 	private RegisteredUser user, u;

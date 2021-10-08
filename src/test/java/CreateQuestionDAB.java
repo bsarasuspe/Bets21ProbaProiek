@@ -15,7 +15,7 @@ import domain.Question;
 import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
-import test.dataAccess.TestDataAccess;
+import test.dataAccess.TestDataAccessTest;
 
 public class CreateQuestionDAB {
 
@@ -23,7 +23,7 @@ public class CreateQuestionDAB {
 	 static DataAccess sut=new DataAccess(true);
 	 
 	 //additional operations needed to execute the test 
-	 static TestDataAccess testDA=new TestDataAccess();
+	 static TestDataAccessTest testDA=new TestDataAccessTest();
 
 	private Event ev;
 	
