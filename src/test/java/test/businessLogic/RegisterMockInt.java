@@ -31,20 +31,15 @@ public class RegisterMockInt {
 	public void test1() {
 			
 			//define parameters
-			String izena = "Nikolas";
-			String id = "12345678L";
-			String email = "ni@ni.com";
-			String pasahitza = "123";
-			int urtea = 1994;
-			int hilabetea = 8;
-			int eguna = 11;
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
 			long bankuZenbakia = 1234567899;
 			int tipo = 2;
 			
 			//invoke System Under Test (sut) 
 				try {
-					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
-					Mockito.verify(dataAccess, Mockito.times(1)).register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.register(myStringList,myIntList, bankuZenbakia, tipo);
+					Mockito.verify(dataAccess, Mockito.times(1)).register(myStringList,myIntList, bankuZenbakia, tipo);
 					assertTrue(true);
 					
 				}
@@ -68,10 +63,14 @@ public class RegisterMockInt {
 			long bankuZenbakia = 1234567899;
 			int tipo = 1;
 			Worker user = new Worker(izena, pasahitza, email, id);
+			
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
+			
 			//invoke System Under Test (sut) 
 				try {
-					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
-					Mockito.verify(dataAccess, Mockito.times(1)).register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.register(myStringList,myIntList, bankuZenbakia, tipo);
+					Mockito.verify(dataAccess, Mockito.times(1)).register(myStringList,myIntList, bankuZenbakia, tipo);
 					assertTrue(true);
 					
 				}
@@ -94,10 +93,13 @@ public class RegisterMockInt {
 			int eguna = 11;
 			long bankuZenbakia = 1234567899;
 			int tipo = 0;
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
+			
 			//invoke System Under Test (sut) 
 				try {
-					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
-					Mockito.verify(dataAccess, Mockito.times(1)).register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.register(myStringList,myIntList, bankuZenbakia, tipo);
+					Mockito.verify(dataAccess, Mockito.times(1)).register(myStringList,myIntList, bankuZenbakia, tipo);
 					assertTrue(true);
 					
 				}
@@ -123,11 +125,13 @@ public class RegisterMockInt {
 			int tipo = 2;
 			RegisteredUser user;
 				
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
 			
 			//invoke System Under Test (sut) 
 				try {
-					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
-					Mockito.doThrow(new UserAlreadyExist()).when(dataAccess).register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.register(myStringList,myIntList, bankuZenbakia, tipo);
+					Mockito.doThrow(new UserAlreadyExist()).when(dataAccess).register(myStringList,myIntList, bankuZenbakia, tipo);
 					fail();
 					
 				}
@@ -153,10 +157,13 @@ public class RegisterMockInt {
 			int tipo = 2;
 			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 			
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
+			
 			//invoke System Under Test (sut) 
 				try {
-					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
-					Mockito.doThrow(new RuntimeException()).when(dataAccess).register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.register(myStringList,myIntList, bankuZenbakia, tipo);
+					Mockito.doThrow(new RuntimeException()).when(dataAccess).register(myStringList,myIntList, bankuZenbakia, tipo);
 					fail();
 					
 				}
@@ -185,10 +192,13 @@ public class RegisterMockInt {
 			int tipo = 2;
 			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 			
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
+			
 			//invoke System Under Test (sut) 
 				try {
-					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
-					Mockito.doThrow(new RuntimeException()).when(dataAccess).register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.register(myStringList,myIntList, bankuZenbakia, tipo);
+					Mockito.doThrow(new RuntimeException()).when(dataAccess).register(myStringList,myIntList, bankuZenbakia, tipo);
 					fail();
 					
 				}
@@ -217,10 +227,13 @@ public class RegisterMockInt {
 			int tipo = 2;
 			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 			
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
+			
 			//invoke System Under Test (sut) 
 			try {
-				sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
-				Mockito.doThrow(new RuntimeException()).when(dataAccess).register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+				sut.register(myStringList,myIntList, bankuZenbakia, tipo);
+				Mockito.doThrow(new RuntimeException()).when(dataAccess).register(myStringList,myIntList, bankuZenbakia, tipo);
 				fail();
 				
 			}
@@ -249,10 +262,13 @@ public class RegisterMockInt {
 			int tipo = 2;
 			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 			
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
+			
 			//invoke System Under Test (sut) 
 			try {
-				sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
-				Mockito.doThrow(new RuntimeException()).when(dataAccess).register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+				sut.register(myStringList,myIntList, bankuZenbakia, tipo);
+				Mockito.doThrow(new RuntimeException()).when(dataAccess).register(myStringList,myIntList, bankuZenbakia, tipo);
 				fail();
 				
 			}
@@ -282,10 +298,13 @@ public class RegisterMockInt {
 			int tipo = 2;
 			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 			
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
+			
 			//invoke System Under Test (sut) 
 			try {
-				sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
-				Mockito.doThrow(new RuntimeException()).when(dataAccess).register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+				sut.register(myStringList,myIntList, bankuZenbakia, tipo);
+				Mockito.doThrow(new RuntimeException()).when(dataAccess).register(myStringList,myIntList, bankuZenbakia, tipo);
 				fail();
 				
 			}
@@ -319,10 +338,13 @@ public class RegisterMockInt {
 		int tipo = 2;
 		RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 		
+		String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+		int[] myIntList = {1994,8,11};
+		
 		//invoke System Under Test (sut) 
 		try {
-			sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
-			Mockito.doThrow(new RuntimeException()).when(dataAccess).register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+			sut.register(myStringList,myIntList, bankuZenbakia, tipo);
+			Mockito.doThrow(new RuntimeException()).when(dataAccess).register(myStringList,myIntList, bankuZenbakia, tipo);
 			fail();
 			
 		}
@@ -356,10 +378,13 @@ public class RegisterMockInt {
 		int tipo = 2;
 		RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 		
+		String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+		int[] myIntList = {1994,8,11};
+		
 		//invoke System Under Test (sut) 
 		try {
-			sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
-			Mockito.doThrow(new RuntimeException()).when(dataAccess).register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+			sut.register(myStringList,myIntList, bankuZenbakia, tipo);
+			Mockito.doThrow(new RuntimeException()).when(dataAccess).register(myStringList,myIntList, bankuZenbakia, tipo);
 			fail();
 			
 		}
@@ -393,10 +418,13 @@ public class RegisterMockInt {
 		int tipo = 2;
 		RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 		
+		String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+		int[] myIntList = {1994,8,11};
+		
 		//invoke System Under Test (sut) 
 		try {
-			sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
-			Mockito.doThrow(new RuntimeException()).when(dataAccess).register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+			sut.register(myStringList,myIntList, bankuZenbakia, tipo);
+			Mockito.doThrow(new RuntimeException()).when(dataAccess).register(myStringList,myIntList, bankuZenbakia, tipo);
 			fail();
 			
 		}
@@ -430,10 +458,13 @@ public class RegisterMockInt {
 		int tipo = (Integer) null;
 		RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 		
+		String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+		int[] myIntList = {1994,8,11};
+		
 		//invoke System Under Test (sut) 
 		try {
-			sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
-			Mockito.doThrow(new RuntimeException()).when(dataAccess).register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+			sut.register(myStringList,myIntList, bankuZenbakia, tipo);
+			Mockito.doThrow(new RuntimeException()).when(dataAccess).register(myStringList,myIntList, bankuZenbakia, tipo);
 			fail();
 			
 		}

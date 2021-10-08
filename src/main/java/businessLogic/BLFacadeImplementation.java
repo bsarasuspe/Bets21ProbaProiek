@@ -139,9 +139,9 @@ public class BLFacadeImplementation  implements BLFacade {
 	}
     
     @WebMethod
-    public void register(String Izena, String Id, String Email, String Pasahitza,int urtea, int hilabetea, int eguna, long BankuZenbakia,int tipo) throws UserAlreadyExist {
+    public void register(String[] myStringList,int[] myIntList, long BankuZenbakia,int tipo) throws UserAlreadyExist {
     	dbManager.open(false);
-		dbManager.register(Izena, Id, Email, Pasahitza,  urtea,hilabetea,eguna,  BankuZenbakia, tipo);
+		dbManager.register(myStringList, myIntList,  BankuZenbakia, tipo);
     	dbManager.close();
     }
     

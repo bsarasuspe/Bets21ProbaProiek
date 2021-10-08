@@ -312,17 +312,17 @@ public boolean existQuestion(Event event, String question) {
 		System.out.println("DataBase closed");
 	}
 	
-	public void register(String Izena, String Id, String Email, String Pasahitza, int urtea, int hilabetea, int eguna, long BankuZenbakia,int tipo) throws UserAlreadyExist{//0=Admin,1=worker,2=register user
+	public void register(String[] myStringList, int[] myIntList, long BankuZenbakia,int tipo) throws UserAlreadyExist{//0=Admin,1=worker,2=register user
 		db.getTransaction().begin();
 		try {
 			if (tipo==2) {
-				db.persist(new RegisteredUser(Izena, Pasahitza, Email, Id, BankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna)));
+				db.persist(new RegisteredUser(myStringList[0], myStringList[1], myStringList[2], myStringList[3], BankuZenbakia, UtilDate.newDate(myIntList[0], myIntList[1], myIntList[2])));
 			}
 			if (tipo==1) {
-				db.persist(new Worker(Izena, Pasahitza, Email, Id));
+				db.persist(new Worker(myStringList[0], myStringList[1], myStringList[2], myStringList[3]));
 			}
 			if (tipo==0) {
-				db.persist(new Admin(Izena, Pasahitza, Email, Id));
+				db.persist(new Admin(myStringList[0], myStringList[1], myStringList[2], myStringList[3]));
 			}
 			db.getTransaction().commit();
 			System.out.println("Saved");

@@ -47,10 +47,14 @@ public class RegisterDAB {
 			long bankuZenbakia = 1234567899;
 			int tipo = 2;
 			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
+			
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
+			
 			//invoke System Under Test (sut) 
 				try {
 					sut.open(true);
-					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.register(myStringList,myIntList, bankuZenbakia, tipo);
 					sut.close();
 					assertTrue(true);
 					
@@ -78,10 +82,13 @@ public class RegisterDAB {
 			long bankuZenbakia = 1234567899;
 			int tipo = 1;
 			Worker user = new Worker(izena, pasahitza, email, id);
+			
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
 			//invoke System Under Test (sut) 
 				try {
 					sut.open(true);
-					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);;
+					sut.register(myStringList,myIntList, bankuZenbakia, tipo);
 					sut.close();
 					assertTrue(true);
 					
@@ -99,19 +106,14 @@ public class RegisterDAB {
 	public void test3() {
 			
 			//define parameters
-			String izena = "Nikolas";
-			String id = "12345678L";
-			String email = "ni@ni.com";
-			String pasahitza = "123";
-			int urtea = 1994;
-			int hilabetea = 8;
-			int eguna = 11;
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
 			long bankuZenbakia = 1234567899;
 			int tipo = 0;
 			//invoke System Under Test (sut) 
 				try {
 					sut.open(true);
-					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);;
+					sut.register(myStringList,myIntList, bankuZenbakia, tipo);
 					sut.close();
 					assertTrue(true);
 					
@@ -137,6 +139,10 @@ public class RegisterDAB {
 			long bankuZenbakia = 1234567899;
 			int tipo = 2;
 			RegisteredUser user;
+			
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
+			
 			//set up test data base
 			try {
 				user = testDA.addUser(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
@@ -144,7 +150,7 @@ public class RegisterDAB {
 			//invoke System Under Test (sut) 
 				try {
 					sut.open(true);
-					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);;
+					sut.register(myStringList,myIntList, bankuZenbakia, tipo);
 					sut.close();
 					fail();
 					
@@ -179,10 +185,13 @@ public class RegisterDAB {
 			int tipo = 2;
 			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 			
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
+			
 			//invoke System Under Test (sut) 
 				try {
 					sut.open(true);
-					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.register(myStringList,myIntList, bankuZenbakia, tipo);
 					sut.close();
 					fail();
 					
@@ -212,10 +221,13 @@ public class RegisterDAB {
 			int tipo = 2;
 			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 			
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
+			
 			//invoke System Under Test (sut) 
 				try {
 					sut.open(true);
-					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.register(myStringList,myIntList, bankuZenbakia, tipo);
 					sut.close();
 					fail();
 					
@@ -245,10 +257,13 @@ public class RegisterDAB {
 			int tipo = 2;
 			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 			
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
+			
 			//invoke System Under Test (sut) 
 				try {
 					sut.open(true);
-					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.register(myStringList,myIntList, bankuZenbakia, tipo);
 					sut.close();
 					fail();
 					
@@ -278,10 +293,13 @@ public class RegisterDAB {
 			int tipo = 2;
 			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 			
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
+			
 			//invoke System Under Test (sut) 
 				try {
 					sut.open(true);
-					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.register(myStringList,myIntList, bankuZenbakia, tipo);
 					sut.close();
 					fail();
 					
@@ -312,10 +330,13 @@ public class RegisterDAB {
 			int tipo = 2;
 			RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 			
+			String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+			int[] myIntList = {1994,8,11};
+			
 			//invoke System Under Test (sut) 
 				try {
 					sut.open(true);
-					sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+					sut.register(myStringList,myIntList, bankuZenbakia, tipo);
 					sut.close();
 					fail();
 					
@@ -350,10 +371,13 @@ public class RegisterDAB {
 		int tipo = 2;
 		RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 		
+		String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+		int[] myIntList = {1994,8,11};
+		
 		//invoke System Under Test (sut) 
 			try {
 				sut.open(true);
-				sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+				sut.register(myStringList,myIntList, bankuZenbakia, tipo);
 				sut.close();
 				fail();
 				
@@ -388,10 +412,13 @@ public class RegisterDAB {
 		int tipo = 2;
 		RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 		
+		String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+		int[] myIntList = {1994,8,11};
+		
 		//invoke System Under Test (sut) 
 			try {
 				sut.open(true);
-				sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+				sut.register(myStringList,myIntList, bankuZenbakia, tipo);
 				sut.close();
 				fail();
 				
@@ -426,10 +453,13 @@ public class RegisterDAB {
 		int tipo = 2;
 		RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 		
+		String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+		int[] myIntList = {1994,8,11};
+		
 		//invoke System Under Test (sut) 
 			try {
 				sut.open(true);
-				sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+				sut.register(myStringList,myIntList, bankuZenbakia, tipo);
 				sut.close();
 				fail();
 				
@@ -464,10 +494,13 @@ public class RegisterDAB {
 		int tipo = (Integer) null;
 		RegisteredUser user = new RegisteredUser(izena, pasahitza, email, id, bankuZenbakia, UtilDate.newDate(urtea, hilabetea, eguna));
 		
+		String[] myStringList = {"Nikolas","12345678L","ni@ni.com","123"};
+		int[] myIntList = {1994,8,11};
+		
 		//invoke System Under Test (sut) 
 			try {
 				sut.open(true);
-				sut.register(izena, id, email, pasahitza, urtea, hilabetea, eguna, bankuZenbakia, tipo);
+				sut.register(myStringList,myIntList, bankuZenbakia, tipo);
 				sut.close();
 				fail();
 				
