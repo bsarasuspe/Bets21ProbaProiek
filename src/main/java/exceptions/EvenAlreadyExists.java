@@ -4,7 +4,7 @@ public class EvenAlreadyExists  extends Exception {
 	 private static final long serialVersionUID = 1L;
 	public EvenAlreadyExists()
 	  {
-	    super();
+	    super(); 
 	  }
 	
 	public EvenAlreadyExists(String s)
