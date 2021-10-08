@@ -55,7 +55,7 @@ public class ApostuaEginDAB {
 			}	
 			
 			//configure the state of the system (create object in the dabatase)
-			testDA.open();
+			testDA.open(); 
 			user = testDA.addUser("Beñat", "bsarasua", "bsarasua@ehu.eus", "pass", 2001, 10, 21, 123, 2);
 			ev = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
 			q = ev.getQuestions().get(0);

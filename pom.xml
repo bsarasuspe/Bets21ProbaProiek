@@ -39,7 +39,7 @@
 <sonar.organization>ehu</sonar.organization>
 <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 <sonar.projectKey>Bets21ProbaProiek</sonar.projectKey>
-<sonar.login>f8c6b578087c92d7353154abe4c367fd61682fb0</sonar.login>
+<sonar.login>904a8b21a8ce37fbdb96e4e11858f93456deb6b6</sonar.login>
 </properties>
 <!-- https://mvnrepository.com/artifact/junit/junit -->
 <dependencies>
