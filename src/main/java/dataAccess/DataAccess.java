@@ -372,25 +372,6 @@ public boolean existQuestion(Event event, String question) {
 
 	public RegisteredUser ApostuaEgin(double DiruKantitaea,RegisteredUser usuario, Vector<Pronostico>  pronostico) throws IncorrectBetException{
 		RegisteredUser user = this.ApostuaEginDos(DiruKantitaea, usuario, pronostico, null);
-		/*db.getTransaction().begin();	
-		Pronostico tmp;
-		for (Pronostico i:pronostico) {
-			tmp=db.find(Pronostico.class, i);
-			if (tmp.getGaldera().getBetMinimum()>DiruKantitaea) {
-				System.out.println("Froga bat da");
-				throw new IncorrectBetException();
-			}
-			pronosticolocal.add(tmp);
-		}
-		RegisteredUser user = db.find(RegisteredUser.class, usuario.getUsername());
-		Apostua apusta=new Apostua(DiruKantitaea, user, pronosticolocal);
-		user.setBalance(usuario.getBalance()-DiruKantitaea);
-		db.persist(user);
-		db.persist(apusta);
-		for (Pronostico i:pronosticolocal) {
-			db.persist(i);
-		}
-		db.getTransaction().commit();*/
 		for (RegisteredUser i:user.getJarraitzendidate()) {
 			try {
 				ApostuaEginDos(DiruKantitaea*i.getPortzentaia(user), i, pronostico,user);
