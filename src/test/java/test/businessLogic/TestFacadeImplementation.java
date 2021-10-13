@@ -5,17 +5,17 @@ import java.util.Date;
 
 import configuration.ConfigXML;
 import domain.Event;
-import test.dataAccess.TestDataAccess;
+import test.dataAccess.TestDataAccessTest;
 
 public class TestFacadeImplementation {
-	TestDataAccess dbManagerTest;
+	TestDataAccessTest dbManagerTest;
  	
     
 	   public TestFacadeImplementation()  {
 			
 			System.out.println("Creating TestFacadeImplementation instance");
 			ConfigXML c=ConfigXML.getInstance();
-			dbManagerTest=new TestDataAccess(); 
+			dbManagerTest=new TestDataAccessTest(); 
 			dbManagerTest.close();
 		}
 		

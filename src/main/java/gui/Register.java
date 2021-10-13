@@ -165,14 +165,18 @@ public class Register {
 									try {
 										if (ano>1900&&mes>=0&&dia>=0&&dia<=31&&mes<=12&&ano<Calendar.getInstance().get(Calendar.YEAR)-18) {
 											if (BankuZenbakiaSartu.getText().matches("^[0-9]{10,12}$")) {
+												
+												String[] myStringArray = {IzenaSartu.getText(), IdSartu.getText(), EmailSartu.getText(),PasaitzaSartu.getText()};
+												int[] MyIntArray = {ano,mes,dia};
+												
 												if (UserSelect.isSelected()) {
-													facade.register(IzenaSartu.getText(),IdSartu.getText(), EmailSartu.getText(), PasaitzaSartu.getText(), ano, mes, dia , numbank,2);
+													facade.register(myStringArray, MyIntArray , numbank,2);
 												}
 												if (AdminSelect.isSelected()) {
-													facade.register(IzenaSartu.getText(),IdSartu.getText(), EmailSartu.getText(), PasaitzaSartu.getText(), ano, mes, dia , numbank,0);
+													facade.register(myStringArray, MyIntArray , numbank,0);
 												}
 												if (WorkerSelect.isSelected()) {
-													facade.register(IzenaSartu.getText(),IdSartu.getText(), EmailSartu.getText(), PasaitzaSartu.getText(), ano, mes, dia , numbank,1);
+													facade.register(myStringArray, MyIntArray, numbank,1);
 												}
 												origen.setVisible(true);
 												frame.setVisible(false);

@@ -71,7 +71,7 @@ public interface BLFacade  {
 	@WebMethod public User login(String username, String password) throws UserDoesNotExist, MismachingUseraAndPasword;
 	
 	
-	@WebMethod public void register(String Izena, String Id, String Email, String Pasahitza,int urtea, int hilabetea, int eguna, long BankuZenbakia,int tipo) throws UserAlreadyExist;
+	@WebMethod public void register(String[] myStringList,int[] myIntList, long BankuZenbakia,int tipo) throws UserAlreadyExist;
 
 	@WebMethod public void createEvent (String description,Date eventDate) throws EvenAlreadyExists;
 	

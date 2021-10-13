@@ -22,7 +22,7 @@ import domain.Question;
 import domain.RegisteredUser;
 import exceptions.IncorrectBetException;
 import exceptions.UserAlreadyExist;
-import test.dataAccess.TestDataAccess;
+import test.dataAccess.TestDataAccessTest;
 
 public class ApostuaEginMockInt {
 	
