@@ -371,29 +371,10 @@ public boolean existQuestion(Event event, String question) {
 	}
 
 	public RegisteredUser ApostuaEgin(double DiruKantitaea,RegisteredUser usuario, Vector<Pronostico>  pronostico) throws IncorrectBetException{
-		db.getTransaction().begin();
-		Vector<Pronostico> pronosticolocal=new Vector<Pronostico>();
-		Pronostico tmp;
-		for (Pronostico i:pronostico) {
-			tmp=db.find(Pronostico.class, i);
-			if (tmp.getGaldera().getBetMinimum()>DiruKantitaea) {
-				System.out.println("Froga bat da");
-				throw new IncorrectBetException();
-			}
-			pronosticolocal.add(tmp);
-		}
-		RegisteredUser user = db.find(RegisteredUser.class, usuario.getUsername());
-		Apostua apusta=new Apostua(DiruKantitaea, user, pronosticolocal);
-		user.setBalance(usuario.getBalance()-DiruKantitaea);
-		db.persist(user);
-		db.persist(apusta);
-		for (Pronostico i:pronosticolocal) {
-			db.persist(i);
-		}
-		db.getTransaction().commit();
+		RegisteredUser user = this.ApostuaEginDos(DiruKantitaea, usuario, pronostico, null);
 		for (RegisteredUser i:user.getJarraitzendidate()) {
 			try {
-				ApostuaEginDos(DiruKantitaea*i.getPortzentaia(user), i, pronosticolocal,user);
+				ApostuaEginDos(DiruKantitaea*i.getPortzentaia(user), i, pronostico,user);
 			}catch (IncorrectBetException e) {
 			}
 		}
@@ -412,9 +393,13 @@ public boolean existQuestion(Event event, String question) {
 			}
 			pronosticolocal.add(tmp);
 		}
-
+		Apostua apusta;
 		RegisteredUser user = db.find(RegisteredUser.class, usuario.getUsername());
-		Apostua apusta=new Apostua(DiruKantitaea, user, pronosticolocal,mandon);
+		if (mandon!=null) {
+			apusta=new Apostua(DiruKantitaea, user, pronosticolocal,mandon);
+		}else {
+			apusta=new Apostua(DiruKantitaea, user, pronosticolocal);
+		}
 		user.setBalance(usuario.getBalance()-DiruKantitaea);
 		db.persist(user);
 		db.persist(apusta);
@@ -431,6 +416,24 @@ public boolean existQuestion(Event event, String question) {
 		RegisteredUser usuario;
 		pronosticolocala.setEstado(true);//marco como resuelto el pronostico
 		db.persist(pronosticolocala);
+		ordaindu(pronosticolocala);//pago las apuestas que coresponde pagar
+		for (Pronostico i: pronosticolocala.getGaldera().getPronostikoak()) {
+			if (!i.getEstado()) {
+				i.perder();
+				db.persist(i);
+				for (Apostua j:i.getApostuak()) {
+					db.persist(j);
+				}
+			}
+		}//el resto de pronosticos de la galdera los marco como perdidos
+		db.getTransaction().commit();
+	}
+
+	/**
+	 * @param pronosticolocala
+	 */
+	private void ordaindu(Pronostico pronosticolocala) {
+		RegisteredUser usuario;
 		for (Apostua i:pronosticolocala.getApostuak()) {
 			if (i.pagar()){
 				usuario=i.getUsuarioa();
@@ -446,17 +449,7 @@ public boolean existQuestion(Event event, String question) {
 				}
 				db.persist(usuario);
 			}
-		}//pago las apuestas que coresponde pagar
-		for (Pronostico i: pronosticolocala.getGaldera().getPronostikoak()) {
-			if (!i.getEstado()) {
-				i.perder();
-				db.persist(i);
-				for (Apostua j:i.getApostuak()) {
-					db.persist(j);
-				}
-			}
-		}//el resto de pronosticos de la galdera los marco como perdidos
-		db.getTransaction().commit();
+		}
 	}
 	
 
