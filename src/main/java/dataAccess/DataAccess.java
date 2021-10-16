@@ -416,6 +416,24 @@ public boolean existQuestion(Event event, String question) {
 		RegisteredUser usuario;
 		pronosticolocala.setEstado(true);//marco como resuelto el pronostico
 		db.persist(pronosticolocala);
+		ordaindu(pronosticolocala);//pago las apuestas que coresponde pagar
+		for (Pronostico i: pronosticolocala.getGaldera().getPronostikoak()) {
+			if (!i.getEstado()) {
+				i.perder();
+				db.persist(i);
+				for (Apostua j:i.getApostuak()) {
+					db.persist(j);
+				}
+			}
+		}//el resto de pronosticos de la galdera los marco como perdidos
+		db.getTransaction().commit();
+	}
+
+	/**
+	 * @param pronosticolocala
+	 */
+	private void ordaindu(Pronostico pronosticolocala) {
+		RegisteredUser usuario;
 		for (Apostua i:pronosticolocala.getApostuak()) {
 			if (i.pagar()){
 				usuario=i.getUsuarioa();
@@ -431,17 +449,7 @@ public boolean existQuestion(Event event, String question) {
 				}
 				db.persist(usuario);
 			}
-		}//pago las apuestas que coresponde pagar
-		for (Pronostico i: pronosticolocala.getGaldera().getPronostikoak()) {
-			if (!i.getEstado()) {
-				i.perder();
-				db.persist(i);
-				for (Apostua j:i.getApostuak()) {
-					db.persist(j);
-				}
-			}
-		}//el resto de pronosticos de la galdera los marco como perdidos
-		db.getTransaction().commit();
+		}
 	}
 	
 
