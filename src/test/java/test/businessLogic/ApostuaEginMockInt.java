@@ -65,8 +65,12 @@ public class ApostuaEginMockInt {
 			//configure mock
 			Mockito.doReturn(user).when(dataAccess).ApostuaEgin(20,Mockito.any(RegisteredUser.class),pro);
 			
+			//invoke System Under Test (sut) 
+			RegisteredUser user1 = sut.ApostuaEgin(20, mockedUser, pro);
+			
 			//verify the results
-			Mockito.verify(dataAccess, Mockito.times(1)).ApostuaEgin(20,Mockito.any(RegisteredUser.class),pro);
+			//Mockito.verify(dataAccess, Mockito.times(1)).ApostuaEgin(20,Mockito.any(RegisteredUser.class),pro);
+			
 			assertTrue(true);
 			
 		   } catch (Exception e) {
@@ -106,6 +110,9 @@ public class ApostuaEginMockInt {
 			//configure mock
 			Mockito.doThrow(new IncorrectBetException()).when(dataAccess).ApostuaEgin(5,Mockito.any(RegisteredUser.class),pro);
 			
+			//invoke System Under Test (sut) 
+			RegisteredUser user1 = sut.ApostuaEgin(5, mockedUser, pro);
+			
 			//verify the results
 			fail();
 			
@@ -143,7 +150,7 @@ public class ApostuaEginMockInt {
 			pro.add(p);	
 			
 			//configure mock
-			Mockito.doThrow(new NullPointerException()).when(dataAccess).ApostuaEgin(5,Mockito.any(RegisteredUser.class),pro);
+			Mockito.doThrow(new Exception()).when(dataAccess).ApostuaEgin(5,null,pro);
 			
 			//verify the results
 			fail();

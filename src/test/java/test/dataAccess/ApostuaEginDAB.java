@@ -320,8 +320,7 @@ public class ApostuaEginDAB {
 			user = testDA.addUser("Beñat", "bsarasua", "bsarasua@ehu.eus", "pass", 2001, 10, 21, 123, 2);
 			ev = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
 			q = ev.getQuestions().get(0);
-			Vector<Pronostico> pro = new Vector<Pronostico>();
-			pro.add(p);
+			Vector<Pronostico> pro = null;
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  
