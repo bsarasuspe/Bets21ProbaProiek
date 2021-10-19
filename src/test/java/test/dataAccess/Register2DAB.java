@@ -25,7 +25,7 @@ import exceptions.QuestionAlreadyExist;
 import exceptions.UserAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
  
-public class RegisterDAB2 {
+public class Register2DAB {
 
 	 //sut:system under test
 	 static DataAccessRegister sut=new DataAccessRegister(true);
