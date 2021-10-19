@@ -24,7 +24,7 @@ import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
 import exceptions.UserAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
-
+ 
 public class RegisterDAB2 {
 
 	 //sut:system under test
