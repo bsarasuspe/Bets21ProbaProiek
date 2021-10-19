@@ -295,7 +295,7 @@ public class ApostuaEgin2DAB {
 		          testDA.close();
 		      //     System.out.println("Finally "+b);          
 		        }
-		   }
+		   } 
 	
 	@Test
 	//sut.createQuestion:  The event has NOT one question with a queryText. 

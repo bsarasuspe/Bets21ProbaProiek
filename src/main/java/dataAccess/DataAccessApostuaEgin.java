@@ -233,7 +233,7 @@ public void open(boolean initializeMode){
 			try {
 				ApostuaEginDos(DiruKantitaea*i.getPortzentaia(user), i, pronostico,user);
 			}catch (IncorrectBetException e) {
-			}
+			} 
 		}
 		return user;
 	}
