@@ -522,4 +522,21 @@ public boolean existQuestion(Event event, String question) {
 	public RegisteredUser conseguirusuario(String usuario) {
 		return db.find(RegisteredUser.class, new RegisteredUser(usuario, "", "", "699999", 0, null));
 	}
+
+	public ArrayList<Apostua> apostuaLortu(RegisteredUser rUser) {
+		
+		ArrayList<Apostua> apostua = new ArrayList<Apostua>();
+		
+		TypedQuery<Apostua> query = db.createQuery("SELECT * FROM Apostua ap",Apostua.class);   
+
+		List<Apostua> apostuak = query.getResultList();
+	 	 for (Apostua ap:apostuak){
+	 		 if(ap.getUsuarioa().getUsername().equals(rUser.getUsername())) {
+	 			 apostua.add(ap);
+	 		 }
+
+		  }
+	 	 
+	 	 return apostua;
+	}
 }

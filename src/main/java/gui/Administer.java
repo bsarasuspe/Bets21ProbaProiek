@@ -35,6 +35,8 @@ import domain.Question;
 import exceptions.EvenAlreadyExists;
 import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
+import patroiak.ExtendedIterator;
+
 import javax.swing.JTextPane;
 
 public class Administer extends JFrame {
@@ -338,9 +340,10 @@ public class Administer extends JFrame {
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						Vector<domain.Event> events = facade.getEvents(firstDay);
+						
+						ExtendedIterator events = facade.getEvents(firstDay);
 
-						if (events.isEmpty())
+						if (!events.hasNext() && !events.hasPrevious())
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
 									+ ": " + dateformat1.format(calendarAct.getTime()));
 						else
@@ -349,11 +352,11 @@ public class Administer extends JFrame {
 						jComboBoxEvents.removeAllItems();
 						System.out.println("Events " + events);
 
-						for (domain.Event ev : events)
-							modelEvents.addElement(ev);
+						while (events.hasNext())
+							modelEvents.addElement((Event) events.next());
 						jComboBoxEvents.repaint();
 
-						if (events.size() == 0)
+						if (!events.hasNext() && !events.hasPrevious())
 							jButtonCreate.setEnabled(false);
 						else
 							jButtonCreate.setEnabled(true);
