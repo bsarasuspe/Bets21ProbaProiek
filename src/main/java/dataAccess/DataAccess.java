@@ -533,68 +533,39 @@ public boolean existQuestion(Event event, String question) {
 		TypedQuery<Apostua> query = db.createQuery("SELECT ap FROM Apostua ap ",Apostua.class);   
 		TypedQuery<Question> query2= db.createQuery("SELECT q FROM Question q",Question.class); 
 		TypedQuery<Event> query3= db.createQuery("SELECT e FROM Event e",Event.class); 
-		
+		galderak = query2.getResultList();
 		List<Apostua> apostuak = query.getResultList();
-	 	 datuakApostua(rUser, datuak, query2, query3, apostuak);  
-	 	 return datuak;
-	}
-
-	/**
-	 * @param rUser
-	 * @param datuak
-	 * @param query2
-	 * @param query3
-	 * @param apostuak
-	 */
-	private void datuakApostua(RegisteredUser rUser, ArrayList<String> datuak, TypedQuery<Question> query2,
-			TypedQuery<Event> query3, List<Apostua> apostuak) {
-		List<Question> galderak;
-		Double aux;
-		String aux2;
+		List<Event> evento = query3.getResultList();
 		for (Apostua ap:apostuak){
 	 		 if(ap.getUsuarioa().getUsername().equals(rUser.getUsername())) {
 	 			 aux=ap.getKantitatea();
 	 			 datuak.add(Double.toString(aux));
+	 			for (Question g:galderak){
+	 				for(Pronostico p : ap.getPronostikoa()) {
+	 					if(g.getPronostikoak().contains(p)) {
+							 datuak.add(g.getQuestion());							 
+							 for (Event ev:evento){
+								 if(ev.getQuestions().contains(g)) {
+									 aux2=ev.getEventDate().toString();
+									 datuak.add(ev.getDescription());
+									 datuak.add(aux2);
+								 }
+							  } 
+						 }
+	 				}
+					 
+					 
+	 			}
 	 		 }
-	 		 
-	 		datuakGaldera(datuak, query2, query3, ap);  
-		  }
-	}
-
-	/**
-	 * @param datuak
-	 * @param query2
-	 * @param query3
-	 * @param ap
-	 */
-	private void datuakGaldera(ArrayList<String> datuak, TypedQuery<Question> query2, TypedQuery<Event> query3,
-			Apostua ap) {
-		List<Question> galderak;
-		String aux2;
-		galderak = query2.getResultList();
-		 for (Question g:galderak){
-			 if(g.getPronostikoak().contains(ap.getPronostikoa())) {
-				 datuak.add(g.getQuestion());
-			 }
+			
 			 
-			datuakEventua(datuak, query3, g);  
-		  }
+				 
+					
+					  
+		  } 
+	 	 return datuak;
 	}
 
-	/**
-	 * @param datuak
-	 * @param query3
-	 * @param g
-	 */
-	private void datuakEventua(ArrayList<String> datuak, TypedQuery<Event> query3, Question g) {
-		String aux2;
-		List<Event> evento = query3.getResultList();
-		 for (Event ev:evento){
-			 if(ev.getQuestions().contains(g)) {
-				 aux2=ev.getEventDate().toString();
-				 datuak.add(ev.getDescription());
-				 datuak.add(aux2);
-			 }
-		  }
-	}
+
+
 }
