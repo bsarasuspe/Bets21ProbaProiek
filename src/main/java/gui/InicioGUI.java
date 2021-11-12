@@ -42,8 +42,8 @@ import java.awt.Color;
 public class InicioGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private final JLabel jLabelEventDate = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("EventDate"));
-	private final JLabel jLabelQueries = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("Queries")); 
-	private final JLabel jLabelEvents = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("Events")); 
+	private final JLabel jLabelQueries = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("Queries"));
+	private final JLabel jLabelEvents = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("Events"));
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	// Code for JCalendar
 	private JCalendar jCalendar1 = new JCalendar();
@@ -52,17 +52,16 @@ public class InicioGUI extends JFrame {
 	private JScrollPane scrollPaneEvents = new JScrollPane();
 	private JScrollPane scrollPaneQueries = new JScrollPane();
 	private ArrayList<Date> datesWithEventsCurrentMonth = new ArrayList<Date>();
-	private JTable tableEvents= new JTable();
+	private JTable tableEvents = new JTable();
 	private JTable tableQueries = new JTable();
+	private JButton ikusiApostuakButton;
 	private DefaultTableModel tableModelEvents;
 	private DefaultTableModel tableModelQueries;
-	private String[] columnNamesEvents = new String[] {
-			ResourceBundle.getBundle("Etiquetas").getString("EventN"), 
-			ResourceBundle.getBundle("Etiquetas").getString("Event"), 
+	private String[] columnNamesEvents = new String[] { ResourceBundle.getBundle("Etiquetas").getString("EventN"),
+			ResourceBundle.getBundle("Etiquetas").getString("Event"),
 
 	};
-	private String[] columnNamesQueries = new String[] {
-			ResourceBundle.getBundle("Etiquetas").getString("QueryN"), 
+	private String[] columnNamesQueries = new String[] { ResourceBundle.getBundle("Etiquetas").getString("QueryN"),
 			ResourceBundle.getBundle("Etiquetas").getString("Query")
 
 	};
@@ -73,36 +72,30 @@ public class InicioGUI extends JFrame {
 	private final JButton LogOut = new JButton(ResourceBundle.getBundle("Etiquetas").getString("LogOut")); //$NON-NLS-1$ //$NON-NLS-2$
 	private JButton btnDiruaSartu;
 	private RegisteredUser usuario;
-	private JLabel lblBalanzea ;
+	private JLabel lblBalanzea;
 	private JTextField textFieldDirua;
 	private JButton btnApostua;
-	private JComboBox <Pronostico> comboBoxPronostico; 
+	private JComboBox<Pronostico> comboBoxPronostico;
 	private JLabel lblErrores;
 	private JLabel lblPronostikoa;
 	private JButton btnMultibeting;
-	private boolean multibeting=false;
+	private boolean multibeting = false;
 	private MultibetingGUI multibetingGUI;
 	private JButton btnC;
 	private JButton btnJarraitu;
-	
-	
-	public InicioGUI()
-	{
+	private InicioGUI nireFrame = this;
+
+	public InicioGUI() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		try
-		{
+		try {
 			jbInit();
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	
-	private void jbInit() throws Exception
-	{
-		
+	private void jbInit() throws Exception {
+
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(900, 500));
 		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("QueryQueries")); //$NON-NLS-1$ //$NON-NLS-2$
@@ -117,24 +110,21 @@ public class InicioGUI extends JFrame {
 
 		jButtonClose.setBounds(new Rectangle(274, 419, 130, 30));
 
-		jButtonClose.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
+		jButtonClose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				jButton2_actionPerformed(e);
 			}
 		});
 
 		this.getContentPane().add(jButtonClose, null);
 
-
 		jCalendar1.setBounds(new Rectangle(42, 92, 225, 150));
 
 		BLFacade facade = MainGUI.getBusinessLogic();///////////////////////////////////////////////////////////////////////////////
-		this.facade=facade;
-		InicioGUI tempora=this;
-		datesWithEventsCurrentMonth=facade.getEventsMonth(jCalendar1.getDate());
-		CreateQuestionGUI.paintDaysWithEvents(jCalendar1,datesWithEventsCurrentMonth);
+		this.facade = facade;
+		InicioGUI tempora = this;
+		datesWithEventsCurrentMonth = facade.getEventsMonth(jCalendar1.getDate());
+		CreateQuestionGUI.paintDaysWithEvents(jCalendar1, datesWithEventsCurrentMonth);
 		Administrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				reset();
@@ -143,12 +133,10 @@ public class InicioGUI extends JFrame {
 			}
 		});
 
-		
-		
 		Administrar.setBounds(42, 11, 117, 23);
 		Administrar.setVisible(false);
 		getContentPane().add(Administrar);
-		
+
 		btnApostua = new JButton(ResourceBundle.getBundle("Etiquetas").getString("btnApostua"));
 		btnApostua.setVisible(false);
 		btnApostua.setEnabled(false);
@@ -157,28 +145,27 @@ public class InicioGUI extends JFrame {
 				double dirukantitatea;
 				reset();
 				try {
-					dirukantitatea=Double.parseDouble(textFieldDirua.getText());
+					dirukantitatea = Double.parseDouble(textFieldDirua.getText());
+				} catch (java.lang.NumberFormatException e) {
+					lblErrores.setText(ResourceBundle.getBundle("Etiquetas").getString("lblErrores1"));
+					return;
+				} catch (java.lang.NullPointerException e) {
+					dirukantitatea = 0;
 				}
-			catch (java.lang.NumberFormatException e) {
-				lblErrores.setText(ResourceBundle.getBundle("Etiquetas").getString("lblErrores1"));
-				return;
-			}catch (java.lang.NullPointerException e) {
-				dirukantitatea=0;
-			}
-				
-				if (usuario.getBalance()<dirukantitatea) {
+
+				if (usuario.getBalance() < dirukantitatea) {
 					lblErrores.setText(ResourceBundle.getBundle("Etiquetas").getString("lblErrores2"));
 					return;
 				}
-				
+
 				if (multibeting) {
-					multibetingGUI.apostuaGeitu(dirukantitatea, (Pronostico)comboBoxPronostico.getSelectedItem());
-				}else {
-				
+					multibetingGUI.apostuaGeitu(dirukantitatea, (Pronostico) comboBoxPronostico.getSelectedItem());
+				} else {
+
 					try {
-						loged(facade.ApostuaEgin(dirukantitatea, usuario, (Pronostico)comboBoxPronostico.getSelectedItem()));
-					}
-					catch (IncorrectBetException e) {
+						loged(facade.ApostuaEgin(dirukantitatea, usuario,
+								(Pronostico) comboBoxPronostico.getSelectedItem()));
+					} catch (IncorrectBetException e) {
 						lblErrores.setText(ResourceBundle.getBundle("Etiquetas").getString("lblErrores3"));
 					}
 				}
@@ -186,110 +173,108 @@ public class InicioGUI extends JFrame {
 		});
 		btnApostua.setBounds(551, 419, 130, 30);
 		getContentPane().add(btnApostua);
-		
-		// Code for JCalendar
-		this.jCalendar1.addPropertyChangeListener(new PropertyChangeListener()
-		{
-			public void propertyChange(PropertyChangeEvent propertychangeevent)
-			{
 
-				if (propertychangeevent.getPropertyName().equals("locale"))
-				{
+		// Code for JCalendar
+		this.jCalendar1.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent propertychangeevent) {
+
+				if (propertychangeevent.getPropertyName().equals("locale")) {
 					jCalendar1.setLocale((Locale) propertychangeevent.getNewValue());
-				}
-				else if (propertychangeevent.getPropertyName().equals("calendar"))
-				{
+				} else if (propertychangeevent.getPropertyName().equals("calendar")) {
 					calendarAnt = (Calendar) propertychangeevent.getOldValue();
 					calendarAct = (Calendar) propertychangeevent.getNewValue();
 					DateFormat dateformat1 = DateFormat.getDateInstance(1, jCalendar1.getLocale());
 //					jCalendar1.setCalendar(calendarAct);
-					Date firstDay=UtilDate.trim(new Date(jCalendar1.getCalendar().getTime().getTime()));
+					Date firstDay = UtilDate.trim(new Date(jCalendar1.getCalendar().getTime().getTime()));
 
-					 
-					
 					int monthAnt = calendarAnt.get(Calendar.MONTH);
 					int monthAct = calendarAct.get(Calendar.MONTH);
-					
-					if (monthAct!=monthAnt) {
-						if (monthAct==monthAnt+2) {
-							// Si en JCalendar está 30 de enero y se avanza al mes siguiente, devolvería 2 de marzo (se toma como equivalente a 30 de febrero)
+
+					if (monthAct != monthAnt) {
+						if (monthAct == monthAnt + 2) {
+							// Si en JCalendar está 30 de enero y se avanza al mes siguiente, devolvería 2
+							// de marzo (se toma como equivalente a 30 de febrero)
 							// Con este código se dejará como 1 de febrero en el JCalendar
-							calendarAct.set(Calendar.MONTH, monthAnt+1);
+							calendarAct.set(Calendar.MONTH, monthAnt + 1);
 							calendarAct.set(Calendar.DAY_OF_MONTH, 1);
-						}						
-						
+						}
+
 						jCalendar1.setCalendar(calendarAct);
 
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						datesWithEventsCurrentMonth=facade.getEventsMonth(jCalendar1.getDate());
+						datesWithEventsCurrentMonth = facade.getEventsMonth(jCalendar1.getDate());
 					}
 
-
-
-					CreateQuestionGUI.paintDaysWithEvents(jCalendar1,datesWithEventsCurrentMonth);
-													
-					
+					CreateQuestionGUI.paintDaysWithEvents(jCalendar1, datesWithEventsCurrentMonth);
 
 					try {
 						tableModelEvents.setDataVector(null, columnNamesEvents);
 						tableModelEvents.setColumnCount(3); // another column added to allocate ev objects
 
-						BLFacade facade=MainGUI.getBusinessLogic();
+						BLFacade facade = MainGUI.getBusinessLogic();
 
-						ExtendedIterator events=facade.getEvents(firstDay);
+						ExtendedIterator events = facade.getEvents(firstDay);
 
-						if (!events.hasNext() && !events.hasPrevious()) jLabelEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")+ ": "+dateformat1.format(calendarAct.getTime()));
-						else jLabelEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("Events")+ ": "+dateformat1.format(calendarAct.getTime()));
-						while (events.hasNext()){
+						if (!events.hasNext() && !events.hasPrevious())
+							jLabelEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents") + ": "
+									+ dateformat1.format(calendarAct.getTime()));
+						else
+							jLabelEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("Events") + ": "
+									+ dateformat1.format(calendarAct.getTime()));
+						while (events.hasNext()) {
 							Vector<Object> row = new Vector<Object>();
 
-							domain.Event ev=(Event) events.next();
-							System.out.println("Events "+ev);
+							domain.Event ev = (Event) events.next();
+							System.out.println("Events " + ev);
 
 							row.add(ev.getEventNumber());
 							row.add(ev.getDescription());
 							row.add(ev); // ev object added in order to obtain it with tableModelEvents.getValueAt(i,2)
-							tableModelEvents.addRow(row);		
+							tableModelEvents.addRow(row);
 						}
 						tableEvents.getColumnModel().getColumn(0).setPreferredWidth(25);
 						tableEvents.getColumnModel().getColumn(1).setPreferredWidth(268);
-						tableEvents.getColumnModel().removeColumn(tableEvents.getColumnModel().getColumn(2)); // not shown in JTable
+						tableEvents.getColumnModel().removeColumn(tableEvents.getColumnModel().getColumn(2)); // not
+																												// shown
+																												// in
+																												// JTable
 					} catch (Exception e1) {
 
 						jLabelQueries.setText(e1.getMessage());
 					}
 
 				}
-			} 
+			}
 		});
 
 		this.getContentPane().add(jCalendar1, null);
-		
+
 		scrollPaneEvents.setBounds(new Rectangle(294, 92, 346, 150));
 		scrollPaneQueries.setBounds(new Rectangle(42, 292, 406, 116));
 
-		
 		tableEvents.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnApostua.setEnabled(false);
-				
-				int i=tableEvents.getSelectedRow();
-				domain.Event ev=(domain.Event)tableModelEvents.getValueAt(i,2); // obtain ev object
-				Vector<Question> queries=ev.getQuestions();
+
+				int i = tableEvents.getSelectedRow();
+				domain.Event ev = (domain.Event) tableModelEvents.getValueAt(i, 2); // obtain ev object
+				Vector<Question> queries = ev.getQuestions();
 
 				tableModelQueries.setDataVector(null, columnNamesQueries);
 
 				if (queries.isEmpty())
-					jLabelQueries.setText(ResourceBundle.getBundle("Etiquetas").getString("NoQueries")+": "+ev.getDescription());
-				else 
-					jLabelQueries.setText(ResourceBundle.getBundle("Etiquetas").getString("SelectedEvent")+" "+ev.getDescription());
-				for (domain.Question q:queries){
+					jLabelQueries.setText(
+							ResourceBundle.getBundle("Etiquetas").getString("NoQueries") + ": " + ev.getDescription());
+				else
+					jLabelQueries.setText(ResourceBundle.getBundle("Etiquetas").getString("SelectedEvent") + " "
+							+ ev.getDescription());
+				for (domain.Question q : queries) {
 					Vector<Object> row = new Vector<Object>();
 					row.add(q.getQuestionNumber());
 					row.add(q.getQuestion());
-					tableModelQueries.addRow(row);	
+					tableModelQueries.addRow(row);
 				}
 				tableQueries.getColumnModel().getColumn(0).setPreferredWidth(25);
 				tableQueries.getColumnModel().getColumn(1).setPreferredWidth(268);
@@ -306,16 +291,16 @@ public class InicioGUI extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				comboBoxPronostico.removeAllItems();
-				List<Pronostico> tmp=facade.PronostikoakLortu((int)tableQueries.getValueAt(tableQueries.getSelectedRow(),0));
+				List<Pronostico> tmp = facade
+						.PronostikoakLortu((int) tableQueries.getValueAt(tableQueries.getSelectedRow(), 0));
 				for (Pronostico i : tmp) {
 					comboBoxPronostico.addItem(i);
 				}
-				/**if (tmp.size()>0) {
-					btnApostua.setEnabled(true);
-				}**/
+				/**
+				 * if (tmp.size()>0) { btnApostua.setEnabled(true); }
+				 **/
 			}
 		});
-
 
 		scrollPaneQueries.setViewportView(tableQueries);
 		tableModelQueries = new DefaultTableModel(null, columnNamesQueries);
@@ -326,7 +311,7 @@ public class InicioGUI extends JFrame {
 
 		this.getContentPane().add(scrollPaneEvents, null);
 		this.getContentPane().add(scrollPaneQueries, null);
-		//InicioGUI temporal=this;
+		// InicioGUI temporal=this;
 		BotonRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				reset();
@@ -334,7 +319,7 @@ public class InicioGUI extends JFrame {
 			}
 		});
 		BotonRegister.setBounds(551, 11, 89, 23);
-		
+
 		getContentPane().add(BotonRegister);
 		BotonLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -343,7 +328,7 @@ public class InicioGUI extends JFrame {
 			}
 		});
 		BotonLogin.setBounds(452, 11, 89, 23);
-		
+
 		getContentPane().add(BotonLogin);
 		LogOut.setVisible(false);
 		LogOut.addActionListener(new ActionListener() {
@@ -352,9 +337,9 @@ public class InicioGUI extends JFrame {
 			}
 		});
 		LogOut.setBounds(178, 11, 121, 23);
-		
+
 		getContentPane().add(LogOut);
-		
+
 		btnDiruaSartu = new JButton(ResourceBundle.getBundle("Etiquetas").getString("btnDiruaSartu")); //$NON-NLS-1$ //$NON-NLS-2$
 		btnDiruaSartu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -366,46 +351,45 @@ public class InicioGUI extends JFrame {
 		btnDiruaSartu.setBounds(452, 39, 117, 25);
 		btnDiruaSartu.setVisible(false);
 		getContentPane().add(btnDiruaSartu);
-		
+
 		lblBalanzea = new JLabel("");
 		lblBalanzea.setBounds(318, 19, 70, 15);
 		lblBalanzea.setVisible(false);
 		getContentPane().add(lblBalanzea);
-		
-		comboBoxPronostico = new JComboBox <Pronostico> ();
+
+		comboBoxPronostico = new JComboBox<Pronostico>();
 		comboBoxPronostico.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (comboBoxPronostico.getItemCount()<1) {
+				if (comboBoxPronostico.getItemCount() < 1) {
 					btnApostua.setEnabled(false);
-				}else {
-					if(((Pronostico)comboBoxPronostico.getSelectedItem()).getEstado()) {
+				} else {
+					if (((Pronostico) comboBoxPronostico.getSelectedItem()).getEstado()) {
 						btnApostua.setEnabled(false);
-					}else {
+					} else {
 						btnApostua.setEnabled(true);
 					}
 				}
 			}
 		});
-		
+
 		comboBoxPronostico.setBounds(511, 295, 346, 22);
 		getContentPane().add(comboBoxPronostico);
-		
+
 		textFieldDirua = new JTextField("");
 		textFieldDirua.setVisible(false);
 		textFieldDirua.setBounds(511, 343, 346, 20);
 		getContentPane().add(textFieldDirua);
 		textFieldDirua.setColumns(10);
-		
-		
+
 		lblPronostikoa = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("lblPronostikoa"));
 		lblPronostikoa.setBounds(511, 266, 346, 14);
 		getContentPane().add(lblPronostikoa);
-		
+
 		lblErrores = new JLabel(""); //$NON-NLS-1$ //$NON-NLS-2$
 		lblErrores.setForeground(Color.RED);
 		lblErrores.setBounds(511, 374, 346, 14);
 		getContentPane().add(lblErrores);
-		
+
 		btnC = new JButton(ResourceBundle.getBundle("Etiquetas").getString("CambiarIdioma")); //$NON-NLS-1$ //$NON-NLS-2$
 		btnC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -414,24 +398,24 @@ public class InicioGUI extends JFrame {
 		});
 		btnC.setBounds(671, 10, 173, 25);
 		getContentPane().add(btnC);
-		
+
 		btnMultibeting = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Multibrting"));
 		btnMultibeting.addActionListener(new ActionListener() {
-			
+
 			public void actionPerformed(ActionEvent arg0) {
 				if (multibeting) {
-					multibeting=false;
+					multibeting = false;
 					multibetingGUI.apagar();
-					multibetingGUI=null;
+					multibetingGUI = null;
 					btnApostua.setText(ResourceBundle.getBundle("Etiquetas").getString("btnApostua"));
 					btnMultibeting.setText(ResourceBundle.getBundle("Etiquetas").getString("Multibrting"));
 					btnDiruaSartu.setEnabled(true);
 					LogOut.setEnabled(true);
 					btnC.setEnabled(true);
 					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				}else {
-					multibeting=true;
-					multibetingGUI= new MultibetingGUI(tempora,usuario,facade);
+				} else {
+					multibeting = true;
+					multibetingGUI = new MultibetingGUI(tempora, usuario, facade);
 					btnMultibeting.setText(ResourceBundle.getBundle("Etiquetas").getString("Monobrting"));
 					btnApostua.setText(ResourceBundle.getBundle("Etiquetas").getString("btnApostua2"));
 					btnDiruaSartu.setEnabled(false);
@@ -444,21 +428,31 @@ public class InicioGUI extends JFrame {
 		btnMultibeting.setBounds(725, 422, 130, 30);
 		btnMultibeting.setVisible(false);
 		getContentPane().add(btnMultibeting);
-		
-		btnJarraitu = new JButton("jaraitu"); //$NON-NLS-1$ //$NON-NLS-2$
+
+		btnJarraitu = new JButton("Jarraitu"); //$NON-NLS-1$ //$NON-NLS-2$
 		btnJarraitu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Seguir(usuario, tempora, facade);
 			}
 		});
 		btnJarraitu.setBounds(584, 39, 117, 25);
-		btnJarraitu.setVisible(false); 
+		btnJarraitu.setVisible(false);
 		getContentPane().add(btnJarraitu);
-		
-		
-		
-		
 
+		ikusiApostuakButton = new JButton(
+				ResourceBundle.getBundle("Etiquetas").getString("InicioGUI.btnNewButton.text")); //$NON-NLS-1$ //$NON-NLS-2$
+		ikusiApostuakButton.setBounds(704, 95, 140, 21);
+		getContentPane().add(ikusiApostuakButton);
+		ikusiApostuakButton.setVisible(false);
+
+		ikusiApostuakButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				apustuDatuakGUI gui = new apustuDatuakGUI(nireFrame, usuario, facade);
+				gui.setVisible(true);
+				nireFrame.setVisible(false);
+			}
+		});
 	}
 
 	private void jButton2_actionPerformed(ActionEvent e) {
@@ -467,18 +461,19 @@ public class InicioGUI extends JFrame {
 		}
 		this.dispose();
 	}
-	
-	public void loged (User user) {
+
+	public void loged(User user) {
 		reset();
 		LogOut.setVisible(true);
 		BotonLogin.setVisible(false);
+		ikusiApostuakButton.setVisible(true);
 		BotonRegister.setVisible(false);
 		this.setVisible(true);
-		if (user instanceof Worker||user instanceof Admin) {
+		if (user instanceof Worker || user instanceof Admin) {
 			Administrar.setVisible(true);
 		}
 		if (user instanceof RegisteredUser) {
-			this.usuario=(RegisteredUser)user;
+			this.usuario = (RegisteredUser) user;
 			btnDiruaSartu.setVisible(true);
 			lblBalanzea.setText(Double.toString(usuario.getBalance()));
 			lblBalanzea.setVisible(true);
@@ -488,14 +483,14 @@ public class InicioGUI extends JFrame {
 			btnJarraitu.setVisible(true);
 		}
 	}
-	
-	public void logout () {
+
+	public void logout() {
 		reset();
 		LogOut.setVisible(false);
 		BotonLogin.setVisible(true);
 		BotonRegister.setVisible(true);
 		Administrar.setVisible(false);
-		this.usuario=null;
+		this.usuario = null;
 		lblBalanzea.setText("");
 		lblBalanzea.setVisible(false);
 		btnDiruaSartu.setVisible(false);
@@ -504,21 +499,21 @@ public class InicioGUI extends JFrame {
 		btnMultibeting.setVisible(false);
 		btnJarraitu.setVisible(false);
 	}
-	
+
 	public void diruagehitu(double sebat) {
 		reset();
 		this.setVisible(true);
 		loged(facade.diruaGeitu(usuario, sebat));
 	}
-	
+
 	public void reset() {
 		lblErrores.setText("");
 	}
-	
+
 	public void idioma() {
 		jLabelEventDate.setText(ResourceBundle.getBundle("Etiquetas").getString("EventDate"));
-		jLabelQueries.setText(ResourceBundle.getBundle("Etiquetas").getString("Queries")); 
-		jLabelEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("Events")); 
+		jLabelQueries.setText(ResourceBundle.getBundle("Etiquetas").getString("Queries"));
+		jLabelEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("Events"));
 		jButtonClose.setText(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 		BotonRegister.setText(ResourceBundle.getBundle("Etiquetas").getString("BotonRegister"));
 		BotonLogin.setText(ResourceBundle.getBundle("Etiquetas").getString("BotonLogin"));
@@ -527,19 +522,16 @@ public class InicioGUI extends JFrame {
 		btnDiruaSartu.setText(ResourceBundle.getBundle("Etiquetas").getString("btnDiruaSartu"));
 		btnApostua.setText(ResourceBundle.getBundle("Etiquetas").getString("btnApostua"));
 		lblPronostikoa.setText(ResourceBundle.getBundle("Etiquetas").getString("lblPronostikoa"));
-		
-		
-		columnNamesQueries = new String[] {
-				ResourceBundle.getBundle("Etiquetas").getString("QueryN"), 
+
+		columnNamesQueries = new String[] { ResourceBundle.getBundle("Etiquetas").getString("QueryN"),
 				ResourceBundle.getBundle("Etiquetas").getString("Query")
 
 		};
-		columnNamesEvents = new String[] {
-				ResourceBundle.getBundle("Etiquetas").getString("EventN"), 
-				ResourceBundle.getBundle("Etiquetas").getString("Event"), 
+		columnNamesEvents = new String[] { ResourceBundle.getBundle("Etiquetas").getString("EventN"),
+				ResourceBundle.getBundle("Etiquetas").getString("Event"),
 
 		};
-		tableModelQueries.setDataVector(null, columnNamesQueries);//Cmabia la tabla
+		tableModelQueries.setDataVector(null, columnNamesQueries);// Cmabia la tabla
 		tableModelEvents.setDataVector(null, columnNamesEvents);
 	}
 }

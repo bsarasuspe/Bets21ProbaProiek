@@ -28,7 +28,7 @@ public class UserAdapter {
 
 		int i=0;
 		
-		while(i<datuak.size()) {
+		while(i<datuak.size()-4) {
 			Object[] row = {datuak.get(i+2),datuak.get(i+1),datuak.get(i+3), datuak.get(i)};
             modelDatuak.addRow(row);
             i= i+4;

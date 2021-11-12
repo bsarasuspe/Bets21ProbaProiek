@@ -530,9 +530,9 @@ public boolean existQuestion(Event event, String question) {
 		
 		Double aux;
 		String aux2;
-		TypedQuery<Apostua> query = db.createQuery("SELECT * FROM Apostua ap",Apostua.class);   
-		TypedQuery<Question> query2= db.createQuery("SELECT * FROM Question q",Question.class); 
-		TypedQuery<Event> query3= db.createQuery("SELECT * FROM Event e",Event.class); 
+		TypedQuery<Apostua> query = db.createQuery("SELECT ap FROM Apostua ap ",Apostua.class);   
+		TypedQuery<Question> query2= db.createQuery("SELECT q FROM Question q",Question.class); 
+		TypedQuery<Event> query3= db.createQuery("SELECT e FROM Event e",Event.class); 
 		
 		List<Apostua> apostuak = query.getResultList();
 	 	 datuakApostua(rUser, datuak, query2, query3, apostuak);  
