@@ -39,6 +39,7 @@ public class apustuDatuakGUI extends JFrame {
 		this.BLFacade = BLFacade;
 		this.origen = origen;
 		this.usuario = usuario;
+		this.setTitle("Ikusi apostuak");
 		UserAdapter adaptadorea = new UserAdapter(usuario);
 		this.tableDatuak = adaptadorea.getTableDatuak();
 		this.modelDatuak = adaptadorea.getModelDatuak();
@@ -50,13 +51,25 @@ public class apustuDatuakGUI extends JFrame {
 	 */
 	private void initialize() {
 		nireFrame = this;
-		this.setSize(new Dimension(387, 544));
+		this.setSize(new Dimension(450, 340));
 		tableDatuak.setBounds(144, 191, 1, 1);
 		tableDatuak.setModel(modelDatuak);
 		getContentPane().setLayout(null);
 		JScrollPane scrollPane = new JScrollPane(tableDatuak);
 		scrollPane.setBounds(0, 0, 436, 263);
 		getContentPane().add(scrollPane);
+		
+		JButton itzuliButton = new JButton("Itzuli");
+		itzuliButton.setBounds(173, 273, 85, 21);
+		getContentPane().add(itzuliButton);
+		
+		itzuliButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				origen.setVisible(true);
+				nireFrame.setVisible(false);
+			}
+		});
 	}
 
 	public void apagar() {
