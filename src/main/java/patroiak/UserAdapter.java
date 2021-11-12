@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.imageio.metadata.IIOMetadataFormatImpl;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import dataAccess.DataAccess;
 import domain.Apostua;
@@ -16,9 +17,9 @@ public class UserAdapter {
 
 
 	private String[] columnNames = { "Event", "Question", "Event Date", "Bet(€)"};
-	private Object[][] data = {};
 
-	private JTable tableDatuak = new JTable(data, columnNames);
+	private DefaultTableModel modelDatuak = new DefaultTableModel(columnNames, 0); 
+	private JTable tableDatuak = new JTable(modelDatuak); 
 
 	public UserAdapter(RegisteredUser rUser) {
 		ArrayList<String> datuak = new ArrayList<String>();
@@ -28,35 +29,20 @@ public class UserAdapter {
 		int i=0;
 		
 		while(i<datuak.size()) {
-			tableDatuak.add(datuak.get(i), tableDatuak);
+			Object[] row = {datuak.get(i+2),datuak.get(i+1),datuak.get(i+3), datuak.get(i)};
+            modelDatuak.addRow(row);
+            i= i+4;
 		}
 
 	}
 
-	/*
-	 * public class DatuakAdaptatuta {
-	 * 
-	 * private String eventua; private String galdera; private String data; private
-	 * String kopurua;
-	 * 
-	 * public DatuakAdaptatuta(String eventua, String galdera, String data, String
-	 * kopurua) {
-	 * 
-	 * }
-	 * 
-	 * public String getGaldera() { return galdera; }
-	 * 
-	 * public void setGaldera(String galdera) { this.galdera = galdera; }
-	 * 
-	 * public String getData() { return data; }
-	 * 
-	 * public void setData(String data) { this.data = data; }
-	 * 
-	 * public String getKopurua() { return kopurua; }
-	 * 
-	 * public void setKopurua(String kopurua) { this.kopurua = kopurua; }
-	 * 
-	 * public String getEventua() { return eventua; } public void setEventua(String
-	 * eventua) { this.eventua = eventua; } }
-	 */
+	public DefaultTableModel getModelDatuak() {
+		return modelDatuak;
+	}
+
+
+	public JTable getTableDatuak() {
+		return tableDatuak;
+	}
+
 }
