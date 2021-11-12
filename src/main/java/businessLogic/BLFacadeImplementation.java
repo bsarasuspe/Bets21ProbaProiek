@@ -27,6 +27,8 @@ import exceptions.MutualFollowingException;
 import exceptions.QuestionAlreadyExist;
 import exceptions.UserAlreadyExist;
 import exceptions.UserDoesNotExist;
+import patroiak.EventIterator;
+import patroiak.ExtendedIterator;
 
 /**
  * It implements the business logic as a web service.
@@ -98,11 +100,13 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * @return collection of events
 	 */
     @WebMethod	
-	public Vector<Event> getEvents(Date date)  {
+	public ExtendedIterator getEvents(Date date)  {
 		dbManager.open(false);
 		Vector<Event>  events=dbManager.getEvents(date);
 		dbManager.close();
-		return events;
+		EventIterator ei= new EventIterator(events);
+		
+		return ei;
 	}
 
     
@@ -275,6 +279,15 @@ public class BLFacadeImplementation  implements BLFacade {
 		RegisteredUser tmp= dbManager.conseguirusuario(usuario);
     	dbManager.close();
     	return tmp;
+	}
+
+	@Override
+	public ArrayList<String> datuakLortu(RegisteredUser rUser) {
+		dbManager.open(false);
+		ArrayList<String> tmp= dbManager.datuakLortu(rUser);
+    	dbManager.close();
+		
+		return tmp;
 	}
 	
 }

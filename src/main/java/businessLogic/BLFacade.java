@@ -9,6 +9,7 @@ import java.util.List;
 import domain.Question;
 import domain.RegisteredUser;
 import domain.User;
+import domain.Apostua;
 import domain.Event;
 import domain.Pronostico;
 import exceptions.EvenAlreadyExists;
@@ -21,6 +22,8 @@ import exceptions.MutualFollowingException;
 import exceptions.QuestionAlreadyExist;
 import exceptions.UserAlreadyExist;
 import exceptions.UserDoesNotExist;
+import patroiak.EventIterator;
+import patroiak.ExtendedIterator;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -51,7 +54,7 @@ public interface BLFacade  {
 	 * @param date in which events are retrieved
 	 * @return collection of events
 	 */
-	@WebMethod public Vector<Event> getEvents(Date date);
+	@WebMethod public ExtendedIterator getEvents(Date date);
 	
 	/**
 	 * This method retrieves from the database the dates a month for which there are events
@@ -100,5 +103,8 @@ public interface BLFacade  {
 	@WebMethod public RegisteredUser encenderseguir (RegisteredUser usuario,int comision) ;
 	
 	@WebMethod public RegisteredUser conseguirusuario (String usuario) ;
+	
+	@WebMethod public ArrayList<String> datuakLortu (RegisteredUser rUser) ;
+	
 	
 }

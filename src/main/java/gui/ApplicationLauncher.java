@@ -10,6 +10,7 @@ import javax.xml.ws.Service;
 
 import configuration.ConfigXML;
 import dataAccess.DataAccess;
+import patroiak.BLFacadeFactory;
 import businessLogic.BLFacade;
 import businessLogic.BLFacadeImplementation;
 
@@ -32,6 +33,8 @@ public class ApplicationLauncher {
 		try {
 			
 			BLFacade appFacadeInterface;
+			BLFacadeFactory blf=new BLFacadeFactory();
+			
 //			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel");
 //			UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
 			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
@@ -44,11 +47,10 @@ public class ApplicationLauncher {
 				//In this option, you can parameterize the DataAccess (e.g. a Mock DataAccess object)
 
 				DataAccess da= new DataAccess(c.getDataBaseOpenMode().equals("initialize"));
-				appFacadeInterface=new BLFacadeImplementation(da);
+				appFacadeInterface = blf.BLFacadeLocal(da);
 
 				
 			}
-			
 			else { //If remote
 				
 				 String serviceName= "http://"+c.getBusinessLogicNode() +":"+ c.getBusinessLogicPort()+"/ws/"+c.getBusinessLogicName()+"?wsdl";
@@ -64,7 +66,7 @@ public class ApplicationLauncher {
 		 
 		        Service service = Service.create(url, qname);
 
-		         appFacadeInterface = service.getPort(BLFacade.class);
+		         appFacadeInterface = blf.BLFacadeInternet(service);
 			} 
 			/*if (c.getDataBaseOpenMode().equals("initialize")) 
 				appFacadeInterface.initializeBD();

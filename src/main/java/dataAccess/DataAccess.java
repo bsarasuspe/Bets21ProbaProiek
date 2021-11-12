@@ -522,4 +522,50 @@ public boolean existQuestion(Event event, String question) {
 	public RegisteredUser conseguirusuario(String usuario) {
 		return db.find(RegisteredUser.class, new RegisteredUser(usuario, "", "", "699999", 0, null));
 	}
+
+	public ArrayList<String> datuakLortu(RegisteredUser rUser) {
+		
+		ArrayList<String> datuak = new ArrayList<String>();
+		List<Question> galderak;
+		
+		Double aux;
+		String aux2;
+		TypedQuery<Apostua> query = db.createQuery("SELECT ap FROM Apostua ap ",Apostua.class);   
+		TypedQuery<Question> query2= db.createQuery("SELECT q FROM Question q",Question.class); 
+		TypedQuery<Event> query3= db.createQuery("SELECT e FROM Event e",Event.class); 
+		galderak = query2.getResultList();
+		List<Apostua> apostuak = query.getResultList();
+		List<Event> evento = query3.getResultList();
+		for (Apostua ap:apostuak){
+	 		 if(ap.getUsuarioa().getUsername().equals(rUser.getUsername())) {
+	 			 aux=ap.getKantitatea();
+	 			 datuak.add(Double.toString(aux));
+	 			for (Question g:galderak){
+	 				for(Pronostico p : ap.getPronostikoa()) {
+	 					if(g.getPronostikoak().contains(p)) {
+							 datuak.add(g.getQuestion());							 
+							 for (Event ev:evento){
+								 if(ev.getQuestions().contains(g)) {
+									 aux2=ev.getEventDate().toString();
+									 datuak.add(ev.getDescription());
+									 datuak.add(aux2);
+								 }
+							  } 
+						 }
+	 				}
+					 
+					 
+	 			}
+	 		 }
+			
+			 
+				 
+					
+					  
+		  } 
+	 	 return datuak;
+	}
+
+
+
 }
