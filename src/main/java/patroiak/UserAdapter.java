@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.imageio.metadata.IIOMetadataFormatImpl;
+import javax.swing.JTable;
 
 import dataAccess.DataAccess;
 import domain.Apostua;
@@ -13,19 +14,49 @@ import domain.RegisteredUser;
 
 public class UserAdapter {
 
-	ArrayList<Event> event = new ArrayList<Event>();
-	ArrayList<Question> question = new ArrayList<Question>();;
-	ArrayList<Date> data = new ArrayList<Date>();;
-	ArrayList<Double> betAmount = new ArrayList<Double>();;
 
-	
+	private String[] columnNames = { "Event", "Question", "Event Date", "Bet(€)"};
+	private Object[][] data = {};
+
+	private JTable tableDatuak = new JTable(data, columnNames);
+
 	public UserAdapter(RegisteredUser rUser) {
-		ArrayList<Apostua> apostuak=new ArrayList<Apostua>();
+		ArrayList<String> datuak = new ArrayList<String>();
 		DataAccess da = new DataAccess();
-		apostuak=da.apostuaLortu(rUser);
+		datuak = da.datuakLortu(rUser);
+
+		int i=0;
 		
-		for(Apostua ap: apostuak) {
-			//event.add(ap.getPronostikoa().get);
+		while(i<datuak.size()) {
+			tableDatuak.add(datuak.get(i), tableDatuak);
 		}
+
 	}
+
+	/*
+	 * public class DatuakAdaptatuta {
+	 * 
+	 * private String eventua; private String galdera; private String data; private
+	 * String kopurua;
+	 * 
+	 * public DatuakAdaptatuta(String eventua, String galdera, String data, String
+	 * kopurua) {
+	 * 
+	 * }
+	 * 
+	 * public String getGaldera() { return galdera; }
+	 * 
+	 * public void setGaldera(String galdera) { this.galdera = galdera; }
+	 * 
+	 * public String getData() { return data; }
+	 * 
+	 * public void setData(String data) { this.data = data; }
+	 * 
+	 * public String getKopurua() { return kopurua; }
+	 * 
+	 * public void setKopurua(String kopurua) { this.kopurua = kopurua; }
+	 * 
+	 * public String getEventua() { return eventua; } public void setEventua(String
+	 * eventua) { this.eventua = eventua; } }
+	 */
 }

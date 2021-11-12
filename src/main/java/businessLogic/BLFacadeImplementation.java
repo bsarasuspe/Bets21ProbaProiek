@@ -282,9 +282,9 @@ public class BLFacadeImplementation  implements BLFacade {
 	}
 
 	@Override
-	public ArrayList<Apostua> apostuaLortu(RegisteredUser rUser) {
+	public ArrayList<String> datuakLortu(RegisteredUser rUser) {
 		dbManager.open(false);
-		ArrayList<Apostua> tmp= dbManager.apostuaLortu(rUser);
+		ArrayList<String> tmp= dbManager.datuakLortu(rUser);
     	dbManager.close();
 		
 		return tmp;

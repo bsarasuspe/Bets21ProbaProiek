@@ -104,7 +104,7 @@ public interface BLFacade  {
 	
 	@WebMethod public RegisteredUser conseguirusuario (String usuario) ;
 	
-	@WebMethod public ArrayList<Apostua> apostuaLortu (RegisteredUser rUser) ;
+	@WebMethod public ArrayList<String> datuakLortu (RegisteredUser rUser) ;
 	
 	
 }

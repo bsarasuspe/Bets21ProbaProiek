@@ -523,20 +523,40 @@ public boolean existQuestion(Event event, String question) {
 		return db.find(RegisteredUser.class, new RegisteredUser(usuario, "", "", "699999", 0, null));
 	}
 
-	public ArrayList<Apostua> apostuaLortu(RegisteredUser rUser) {
+	public ArrayList<String> datuakLortu(RegisteredUser rUser) {
 		
-		ArrayList<Apostua> apostua = new ArrayList<Apostua>();
+		ArrayList<String> datuak = new ArrayList<String>();
+		List<Question> galderak;
 		
+		Double aux;
+		String aux2;
 		TypedQuery<Apostua> query = db.createQuery("SELECT * FROM Apostua ap",Apostua.class);   
-
+		TypedQuery<Question> query2= db.createQuery("SELECT * FROM Question q",Question.class); 
+		TypedQuery<Event> query3= db.createQuery("SELECT * FROM Event e",Event.class); 
+		
 		List<Apostua> apostuak = query.getResultList();
 	 	 for (Apostua ap:apostuak){
 	 		 if(ap.getUsuarioa().getUsername().equals(rUser.getUsername())) {
-	 			 apostua.add(ap);
+	 			 aux=ap.getKantitatea();
+	 			 datuak.add(Double.toString(aux));
 	 		 }
-
-		  }
-	 	 
-	 	 return apostua;
+	 		 
+	 		galderak = query2.getResultList();
+		 	 for (Question g:galderak){
+		 		 if(g.getPronostikoak().contains(ap.getPronostikoa())) {
+		 			 datuak.add(g.getQuestion());
+		 		 }
+		 		 
+		 		List<Event> evento = query3.getResultList();
+			 	 for (Event ev:evento){
+			 		 if(ev.getQuestions().contains(g)) {
+			 			 aux2=ev.getEventDate().toString();
+			 			 datuak.add(ev.getDescription());
+			 			 datuak.add(aux2);
+			 		 }
+				  }  
+			  }  
+		  }  
+	 	 return datuak;
 	}
 }
